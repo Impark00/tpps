@@ -1,9 +1,8 @@
-package com.ps.tp.test;
+package com.ps.tp.controllor;
 
 import org.springframework.stereotype.Controller;
 
 @Controller
-public class ttest {
+public class PageController {
 
-	}
-
+}
