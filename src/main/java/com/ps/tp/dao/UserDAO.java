@@ -1,5 +1,7 @@
 package com.ps.tp.dao;
 
-public interface UserDAO {
+import com.ps.tp.vo.UserVO;
 
+public interface UserDAO {
+	void signup(UserVO vo) throws Exception;
 }

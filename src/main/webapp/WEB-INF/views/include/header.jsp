@@ -32,10 +32,10 @@
 							<a class="nav-link" href="#">write</a>
 						</li>
 						<li class="nav-item">
-							<a class="nav-link" href="#">login</a>
+							<a class="nav-link" href="/signin">login</a>
 						</li>
 						<li class="nav-item">
-							<a class="nav-link" href="/tp/signup">join</a>
+							<a class="nav-link" href="/signup">join</a>
 						</li>
 
 					</c:if>	
