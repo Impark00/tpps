@@ -6,7 +6,7 @@
 <div class="col-md-12">
 <form method="post">
 	<div class="form-group">
-		<input type="text" name="userId" placeholder="아이디" class="form-control"
+		<input type="text" name="userId" placeholder="아이디" class="form-control">
 	</div>
 </form>
 </div>
