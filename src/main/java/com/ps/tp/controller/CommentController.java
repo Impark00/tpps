@@ -1,8 +1,8 @@
-package com.ps.tp.controllor;
+package com.ps.tp.controller;
 
 import org.springframework.stereotype.Controller;
 
 @Controller
-public class PageController {
+public class CommentController {
 
 }

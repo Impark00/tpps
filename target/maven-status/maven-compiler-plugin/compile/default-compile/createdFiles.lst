@@ -1,4 +1,6 @@
 com\ps\tp\dao\PageDAO.class
+com\ps\tp\controller\CommentController.class
+com\ps\tp\controller\PageController.class
 com\ps\tp\service\PageServiceImpl.class
 com\ps\tp\dao\UserDAOImpl.class
 com\ps\tp\dao\PageDAOImpl.class
@@ -8,11 +10,9 @@ com\ps\tp\service\CommentServiceImpl.class
 com\ps\tp\service\UserService.class
 com\ps\tp\vo\CommentVO.class
 com\ps\tp\dao\CommentDAO.class
-com\ps\tp\controllor\PageController.class
 com\ps\tp\service\UserServiceImpl.class
 com\ps\tp\vo\PageVO.class
+com\ps\tp\controller\UserController.class
 com\ps\tp\dao\UserDAO.class
-com\ps\tp\controllor\UserController.class
 com\ps\tp\dao\CommentDAOImpl.class
-com\ps\tp\controllor\CommentController.class
 com\ps\tp\service\PageService.class
