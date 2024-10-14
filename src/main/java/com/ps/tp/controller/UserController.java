@@ -3,6 +3,7 @@ package com.ps.tp.controller;
 import javax.inject.Inject;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.annotation.Bean;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -20,14 +21,16 @@ public class UserController {
 	@Autowired
 	BCryptPasswordEncoder encoder;
 	
+	@Bean//객체 생성을 하지 않으면 오류가 생김
+	BCryptPasswordEncoder passEncoder() {
+		return new BCryptPasswordEncoder();
+	}
+	
 	@GetMapping(value="/signup")
 	public String getSignup() throws Exception{
 		return "userinfo/signup";
 	}
 	
-	@PostMapping(value="/signup")
-	public String postSignup(UserVO vo) throws Exception{
-		
-	}
+	
 	
 }
