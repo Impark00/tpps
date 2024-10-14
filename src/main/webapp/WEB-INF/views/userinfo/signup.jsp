@@ -21,8 +21,8 @@
 <div class="form-goup">
 	<input type="email" name="userEmail" placeholder="이메일" class="form-control my-5">
 </div>
-<div class="form-group d-flex justify-content-end">
-	<input type="submit" value="회원가입" class="form-control btn btn-primary">
+<div class="d-flex justify-content-end">
+	<input type="submit" value="회원가입" class="btn btn-outline-primary">
 </div>
 </form>
 </div>
