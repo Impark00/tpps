@@ -4,4 +4,6 @@ import com.ps.tp.vo.UserVO;
 
 public interface UserDAO {
 	void signup(UserVO vo) throws Exception;
+	
+	UserVO signin(UserVO vo) throws Exception;
 }

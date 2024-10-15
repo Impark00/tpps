@@ -1,6 +1,7 @@
 package com.ps.tp.service;
 
 import javax.inject.Inject;
+import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
@@ -36,6 +37,24 @@ public class UserServiceImpl implements UserService {
 		String passRe=encoder.encode(inputpassRe);
 		vo.setUserPasswordRe(passRe);
 		dao.signup(vo);
+	}
+
+
+	@Override
+	public int signin(UserVO vo) throws Exception {
+		UserVO login=dao.signin(vo);
+		boolean passMatch=encoder.matches(vo.getUserPassword(), login.getUserPassword());
+		if(login!=null &&passMatch) {
+			return 1;
+		}else {
+			return 0;
+		}
+	}
+
+
+	@Override
+	public void logout(HttpSession session) throws Exception {
+		session.invalidate();
 	}
 
 }

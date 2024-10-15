@@ -20,4 +20,9 @@ public class UserDAOImpl implements UserDAO {
 		sql.insert(namespace+".signup",vo);
 	}
 
+	@Override
+	public UserVO signin(UserVO vo) throws Exception {
+		return sql.selectOne(namespace+".signin", vo);
+	}
+
 }
