@@ -39,14 +39,20 @@ public class UserController {
 	public String postSignin(UserVO vo,HttpServletRequest req,RedirectAttributes rttr) throws Exception{
 		HttpSession session=req.getSession();
 		
-		if(service.signin(vo)==1) {
+		switch(service.signin(vo)) {
+		case 1:
 			session.setAttribute("userinfo", vo);
-		}else {
-			session.setAttribute("userinfo",null);
-			rttr.addFlashAttribute("msg",false);
-			return "/redirect:/signin";
+			return "redirect:/";
+		case 0:
+			session.setAttribute("userinfo", null);
+			rttr.addFlashAttribute("msg",0);
+			break;
+		case -1:
+			session.setAttribute("userinfo", null);
+			rttr.addFlashAttribute("msg",-1);
+			break;
 		}
-		return "redirect:/";
+		return "redirect:/signin";
 	}
 	
 	@GetMapping(value="/logout")

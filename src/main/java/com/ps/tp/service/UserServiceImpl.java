@@ -43,12 +43,16 @@ public class UserServiceImpl implements UserService {
 	@Override
 	public int signin(UserVO vo) throws Exception {
 		UserVO login=dao.signin(vo);
-		boolean passMatch=encoder.matches(vo.getUserPassword(), login.getUserPassword());
-		if(login!=null &&passMatch) {
-			return 1;
-		}else {
-			return 0;
+		if(login!=null){
+			boolean passMatch=encoder.matches(vo.getUserPassword(), login.getUserPassword());
+			if(passMatch) {
+				return 1;
+			}else {
+				return 0;
+			}
 		}
+		return -1;
+		
 	}
 
 

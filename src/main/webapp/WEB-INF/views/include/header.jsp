@@ -9,7 +9,6 @@
 <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<link rel="stylesheet" href="${path}/resources/css/bbs.css"/>
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <script src="https://t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
 
@@ -24,7 +23,7 @@
 		</button>
 		<div class="collapse navbar-collapse" id="mynavbar">
 			<ul class="navbar-nav mb-2 mb-lg-0 me-auto">
-				<c:if test ="${member == null }">
+				<c:if test ="${userinfo == null}">
 					<li class="nav-item">
 						<a class="nav-link" href="#">write</a>
 					</li>
@@ -35,24 +34,22 @@
 						<a class="nav-link" href="/signup">join</a>
 					</li>
 				</c:if>
-			</ul>
+			<div class="d-flex align-items-center">
 			<c:if test ="${userinfo != null }">
 				<c:if test ="${userinfo.verify == 0}">
-					<div class="d-flex align-items-center">
-						<ul class="navbar-nav mb-2 mb-lg-0 me-auto">
-							<li class="nav-item">
-								<span class="fw-bold">${userinfo.userId}&nbsp;님 환영합니다</span>
-							</li>
-							<li class="nav-item">
-								<a class="nav-link" href="#">마이페이지</a>
-							</li>
-							<li class="nav-item">
-								<a class="nav-link" href="/logout">logout</a>
-							</li>	
-						</ul>
-					</div>
+					<li class="nav-item">
+						<span class="fw-bold">${userinfo.userId}&nbsp;님 환영합니다</span>
+					</li>
+					<li class="nav-item">
+						<a class="nav-link" href="#">마이페이지</a>
+					</li>
+					<li class="nav-item">
+						<a class="nav-link" href="/logout">logout</a>
+					</li>	
 				</c:if>
 			</c:if>
+			</div>
+			</ul>
 			<form class="dflex btn-group">
 				<input class="form-control" type="text" placeholder="Search">
 				<button class="btn btn-primary" type="button">Search</button>
