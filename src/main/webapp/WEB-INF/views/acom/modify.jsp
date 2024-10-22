@@ -7,7 +7,7 @@
 <title>댓글 수정</title>
 </head>
 <body>
-<form method="post" action="/acom/write">
+<form method="post" action="/acom/modify">
 	<div class="input-group">
 		<label class="form-label">
 		댓글 작성자

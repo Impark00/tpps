@@ -21,7 +21,7 @@ update tpps_acom set arwriter = #{arwriter}, arcontent = #{arcontent} where arno
 </update>
 <delete id="areplyDelete" parameterType="com.ps.tp.vo.CommentVO">
 <![CDATA[
-delete from tpps_acom where arno = #{arno} and bno = ${ano}
+delete from tpps_acom where arno = #{arno} and ano = ${ano}
 ]]>
 </delete>
 <select id="areplySelect" parameterType="com.ps.tp.vo.CommentVO" resultType="com.ps.tp.vo.CommentVO">

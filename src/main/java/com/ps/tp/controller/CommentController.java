@@ -45,4 +45,10 @@ public class CommentController {
 		return "redirect:/aboard/view?ano=" + vo.getAno();
 	}
 	
+	@GetMapping(value="/acom/delete")
+	public String getaDelete(CommentVO vo, @RequestParam("ano") int ano) throws Exception {
+		commentservice.adelete(vo);
+		return "redirect:/aboard/view?ano=" + ano;
+	}
+
 }
