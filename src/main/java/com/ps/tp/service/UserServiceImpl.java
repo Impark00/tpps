@@ -25,7 +25,15 @@ public class UserServiceImpl implements UserService {
 		return new BCryptPasswordEncoder();
 	}
 	
-	
+	@Override
+	public int idCheck(String userId) throws Exception {
+		if(dao.idCheck(userId)==0) {
+			return 1;
+		}else {
+			return 0;
+		}
+	}
+
 	@Override
 	public void signup(UserVO vo) throws Exception {
 		
@@ -33,7 +41,7 @@ public class UserServiceImpl implements UserService {
 		String pass=encoder.encode(inputpass);
 		vo.setUserPassword(pass);
 		
-		String inputpassRe=vo.getUserPasswordRe();
+		String inputpassRe=vo.getUserPasswordRe();			
 		String passRe=encoder.encode(inputpassRe);
 		vo.setUserPasswordRe(passRe);
 		dao.signup(vo);

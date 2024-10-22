@@ -4,9 +4,11 @@ import javax.inject.Inject;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.ps.tp.service.UserService;
@@ -24,8 +26,16 @@ public class UserController {
 		return "userinfo/signup";
 	}
 	
+	@PostMapping(value="/idcheck")
+	public ResponseEntity<Integer> idCheck(@RequestBody String userId) throws Exception{
+		int checkedId=service.idCheck(userId);
+		return ResponseEntity.ok(checkedId);
+	}
+	
 	@PostMapping(value="/signup")
-	public String postSignup(UserVO vo) throws Exception{
+	public String postSignup(UserVO vo,RedirectAttributes rttr) throws Exception{
+		
+		
 		service.signup(vo);
 		return "redirect:/signin";
 	}

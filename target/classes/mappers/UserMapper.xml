@@ -1,6 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.ps.tp.mappers.UserMapper">
+<select id="idCheck" resultType="java.lang.Integer">
+	<![CDATA[SELECT COUNT(*) FROM tpps_user WHERE userId=#{userId}]]>
+</select>
 <insert id="signup" parameterType="com.ps.tp.vo.UserVO">
 	<![CDATA[INSERT INTO tpps_user (userId,userPassword,userPasswordRe,userName,userPhone,userEmail) VALUES (#{userId},#{userPassword},#{userPasswordRe},#{userName},#{userPhone},#{userEmail})]]>
 </insert>

@@ -16,6 +16,11 @@ public class UserDAOImpl implements UserDAO {
 	private static String namespace="com.ps.tp.mappers.UserMapper";
 	
 	@Override
+	public int idCheck(String userId) throws Exception {
+		return sql.selectOne(namespace+".idCheck",userId);
+	}
+
+	@Override
 	public void signup(UserVO vo) throws Exception {
 		sql.insert(namespace+".signup",vo);
 	}
