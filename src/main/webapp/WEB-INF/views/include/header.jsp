@@ -33,6 +33,12 @@
 					<li class="nav-item">
 						<a class="nav-link" href="/signup">join</a>
 					</li>
+					<li class="nav-item">
+							<a class="nav-link" href="${path}/aboard/list">alist</a>
+					</li>
+					<li class="nav-item">
+							<a class="nav-link" href="${path}/bboard/list">blist</a>
+					</li>
 				</c:if>
 			<div class="d-flex align-items-center">
 			<c:if test ="${userinfo != null }">
@@ -46,6 +52,12 @@
 					<li class="nav-item">
 						<a class="nav-link" href="/logout">logout</a>
 					</li>	
+					<li class="nav-item">
+							<a class="nav-link" href="${path}/aboard/list">alist</a>
+					</li>
+					<li class="nav-item">
+							<a class="nav-link" href="${path}/bboard/list">blist</a>
+					</li>
 				</c:if>
 			</c:if>
 			</div>
