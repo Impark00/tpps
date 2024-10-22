@@ -32,11 +32,12 @@
 							<a class="nav-link" href="#">write</a>
 						</li>
 						<li class="nav-item">
-<<<<<<< HEAD
-							<a class="nav-link" href="${path}/aboard/list">list</a>
-=======
-							<a class="nav-link" href="/signin">login</a>
->>>>>>> 4eabc9ed92864b8430f5819900d3a443bdbcca86
+
+							<a class="nav-link" href="${path}/aboard/list">alist</a>
+						</li>
+						<li class="nav-item">
+							<a class="nav-link" href="${path}/bboard/list">blist</a>
+
 						</li>
 						<li class="nav-item">
 							<a class="nav-link" href="/signup">join</a>

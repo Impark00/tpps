@@ -4,37 +4,40 @@ import java.util.Date;
 
 public class CommentVO {
 
-	private int bno;
-	private int rno;
-	private String rContent;
-	private Date rDate;
-
+	private int arno;
+	private int ano;
+	private String arwriter;
+	private String arcontent;
+	private Date ardate;
 	
-	
-	public int getBno() {
-		return bno;
+	public int getArno() {
+		return arno;
 	}
-	public void setBno(int bno) {
-		this.bno = bno;
+	public void setArno(int arno) {
+		this.arno = arno;
 	}
-	public int getRno() {
-		return rno;
+	public int getAno() {
+		return ano;
 	}
-	public String getrContent() {
-		return rContent;
+	public void setAno(int ano) {
+		this.ano = ano;
 	}
-	public Date getrDate() {
-		return rDate;
+	public String getArwriter() {
+		return arwriter;
 	}
-	public void setRno(int rno) {
-		this.rno = rno;
+	public void setArwriter(String arwriter) {
+		this.arwriter = arwriter;
 	}
-	public void setrContent(String rContent) {
-		this.rContent = rContent;
+	public String getArcontent() {
+		return arcontent;
 	}
-	public void setrDate(Date rDate) {
-		this.rDate = rDate;
+	public void setArcontent(String arcontent) {
+		this.arcontent = arcontent;
 	}
-	
-	
+	public Date getArdate() {
+		return ardate;
+	}
+	public void setArdate(Date ardate) {
+		this.ardate = ardate;
+	}
 }

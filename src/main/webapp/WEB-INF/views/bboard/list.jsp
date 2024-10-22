@@ -16,17 +16,17 @@
 </colgroup>
 <thead>
 <tr>
-<th class="text-center">번호</th><th class="text-center">제목</th><th class="text-center">작성일</th><th class="text-center">조회수</th><th class="text-center">추천</th>
+<th class="text-center">번호</th><th class="text-center">제목</th><th class="text-center">작성일</th><th class="text-center">작성자</th><th class="text-center">조회수</th>
 </tr>
 </thead>
 <tbody>
 <c:forEach items="${list}" var="list">
  <tr>
-  <td class="text-center">${list.ano}</td>
-  <td><a href="/aboard/view?ano=${list.ano} ">${list.atitle}</a></td>
-  <td class="text-center">${list.adate}</td>
-  <td class="text-center">${list.aview}</td>
-  <td class="text-center">${list.achu}</td>
+  <td class="text-center">${list.bno}</td>
+  <td><a href="/board/view?bno=${list.bno} ">${list.title}</a></td>
+  <td class="text-center">${list.regDate}</td>
+  <td class="text-center">${list.writer}</td>
+  <td class="text-center">${list.viewCnt}</td>
  </tr>
 </c:forEach>
 </tbody>

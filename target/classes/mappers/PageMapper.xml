@@ -2,9 +2,44 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.ps.tp.mappers.PageMapper">
 
-<select id="pagelist" resultType="com.ps.tp.vo.PageVO">
+
+<!-- Aboard -->
+<select id="alist" resultType="com.ps.tp.vo.PageVO">
 <![CDATA[
-select bno, btitle, bdate, bview, bchu from tpps_aboard
+select ano, atitle, adate, aview, awriter, achu from tpps_aboard
+]]>
+</select>
+
+<insert id="awrite" parameterType="com.ps.tp.vo.PageVO">
+<![CDATA[
+insert into tpps_aboard(ano, atitle, acontent,awriter) values (tpps_aboard_seq.nextval, #{atitle}, #{acontent}, #{awriter})
+]]>
+</insert>
+
+<select id="aview" parameterType="int" resultType="com.ps.tp.vo.PageVO">
+
+select ano, atitle, acontent, adate, aview, achu, awriter from tpps_aboard where ano = #{ano}
+
+</select>
+
+<update id="amodify" parameterType="com.ps.tp.vo.PageVO">
+<![CDATA[
+update tpps_aboard set atitle = #{atitle}, acontent=#{acontent} where ano = #{ano}
+]]>
+</update>
+<delete id="adelete" parameterType="int">
+<![CDATA[
+delete from tpps_aboard where ano = #{ano}
+]]>
+</delete>
+
+
+
+
+<!-- Bboard -->
+<select id="blist" resultType="com.ps.tp.vo.PageVO">
+<![CDATA[
+select bno, btitle, bdate, bview, bchu from tpps_bboard
 ]]>
 </select>
 </mapper>
