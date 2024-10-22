@@ -16,6 +16,7 @@
 <body>
 
 <nav class="navbar navbar-expand-sm bg-light">
+<<<<<<< HEAD
 	<div class="container-fluid w-100">
 		<a class="navbar-brand" href="${path}/">COMU</a>
 		<button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#mynavbar">
@@ -56,4 +57,52 @@
 			</form>
 		</div>
 	</div>
+=======
+  <div class="container-fluid w-100">
+    <a class="navbar-brand" href="${path}/">COMU</a>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#mynavbar">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="mynavbar">
+				<ul class="navbar-nav mb-2 mb-lg-0 me-auto">
+					<c:if test ="${member == null }">
+						<li class="nav-item">
+							<a class="nav-link" href="#">write</a>
+						</li>
+						<li class="nav-item">
+							<a class="nav-link" href="${path}/aboard/list">list</a>
+							<a class="nav-link" href="/signin">login</a>
+						</li>
+						<li class="nav-item">
+							<a class="nav-link" href="/signup">join</a>
+						</li>
+
+					</c:if>	
+
+
+					
+					<c:if test ="${member != null }">
+						<c:if test ="${member.verify == 9}">
+						<div class="d-flex align-items-center">
+						<li class="nav-item">
+							<a class="nav-link" href="#">관리자 화면</a>
+						</li>
+						</c:if>
+						<li class="nav-item">
+						<span class="fw-bold">${member.userName}&nbsp;님 환영합니다</span>
+						</li>
+						<li class="nav-item">
+							<a class="nav-link" href="#">logout</a>
+						</li>
+						</div>
+					</c:if>			
+				
+				</ul>
+      <form class="dflex btn-group">
+         <input class="form-control" type="text" placeholder="Search">
+        <button class="btn btn-primary" type="button">Search</button>
+      </form>
+    </div>
+  </div>
+>>>>>>> main
 </nav>
