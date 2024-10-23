@@ -15,19 +15,13 @@
 <input type="text" name="atitle" class="form-control" placeholder="제목을 적어주세요"/>
 </div>
 
-<div class="input-group my-3">
-	<label class="form-label">
-작성자
-	</label>
-<input type="text" name="awriter" class="form-control"/>
-</div>
-
 <div class="input-group mb-4">
 	<label class="form-label">
 내용
 	</label>
 <textarea name="acontent" class="form-control" placeholder="내용을 적어주세요"></textarea>
 </div>
+<input type="hidden" name="awriter" class="form-control" value="${userinfo.userId}"/>
 <div class="d-flex justify-content-end my-5">
 <button type="submit" class="btn btn-outline-primary">전송</button>
 </div>

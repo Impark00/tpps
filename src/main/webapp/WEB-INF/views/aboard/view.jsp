@@ -19,7 +19,7 @@
 	<label class="form-label w-25">
 	날짜
 	</label>
-	<label class="form-label w-75">${view.adate}</label>
+	<fmt:formatDate value="${view.adate}" pattern="yyyy-MM-dd"/>
 </div>
 <hr/>
 <div class="input-group mb-3">
