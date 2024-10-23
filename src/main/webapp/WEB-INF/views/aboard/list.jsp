@@ -74,8 +74,15 @@
 	</c:forEach>--%>
 </ul>
 </div>
+
 <div class="d-flex justify-content-end my-5">
+<c:if test ="${userinfo != null }">
 <a href="/aboard/write" class="btn btn-outline-primary">Write</a>
+</c:if>
+<c:if test ="${userinfo == null }">
+<a href="/signin" class="btn btn-outline-primary">Write</a>
+</c:if>
+
 </div>
 </div>
 </div>
