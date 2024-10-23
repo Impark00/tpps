@@ -37,9 +37,6 @@
 							<a class="nav-link" href="${path}/aboard/list">alist</a>
 					</li>
 					<li class="nav-item">
-							<a class="nav-link" href="${path}/aboard/listtest">alisttest</a>
-					</li>
-					<li class="nav-item">
 							<a class="nav-link" href="${path}/bboard/list">blist</a>
 					</li>
 				</c:if>

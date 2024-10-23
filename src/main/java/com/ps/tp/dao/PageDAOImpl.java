@@ -20,12 +20,7 @@ public class PageDAOImpl implements PageDAO {
 	
 	
 	//aboard
-	@Override
-	public List<PageVO> alist() throws Exception {
-		
-		return sql.selectList(namespace + ".alist");
-	}
-
+ 
 	@Override
 	public void awrite(PageVO vo) throws Exception {
 		sql.insert(namespace + ".awrite", vo);
@@ -48,7 +43,7 @@ public class PageDAOImpl implements PageDAO {
 	}
 	
 	@Override //게시물목록 + 페이징 + 검색 매서드의 배개변수로 searchType, keyword를 받을수 있게 해주었고
-	public List<PageVO> listPageSearch(int displayPost, int postNum, String searchType, String keyword)throws Exception {
+	public List<PageVO> alistPageSearch(int displayPost, int postNum, String searchType, String keyword)throws Exception {
 	
 	HashMap<String, Object> data = new HashMap<String, Object>();
 	data.put("displayPost", displayPost);
@@ -57,19 +52,19 @@ public class PageDAOImpl implements PageDAO {
 	data.put("searchType", searchType);//해시맵에도 추가를 하였습니다
 	data.put("keyword", keyword);
 	
-	return sql.selectList(namespace +".listPageSearch", data);
+	return sql.selectList(namespace +".alistPageSearch", data);
 	}
 
 
 	@Override//게시물 총갯수 + 검색 적용
-	public int searchCount(String searchType, String keyword) throws Exception {
+	public int asearchCount(String searchType, String keyword) throws Exception {
 
 		HashMap data = new HashMap();
 		
 		data.put("searchType", searchType);//해시맵에도 추가를 하였습니다
 		data.put("keyword", keyword);
 				
-		return sql.selectOne(namespace + ".searchCount", data);
+		return sql.selectOne(namespace + ".asearchCount", data);
 	}
 	
 	
