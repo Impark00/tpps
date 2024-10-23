@@ -17,6 +17,9 @@ public interface PageDAO {
 	
 	public void adelete(int ano) throws Exception;
 	
+	public List<PageVO> listPageSearch(int displayPost, int postNum, String searchType, String keyword) throws Exception;
+
+	public int searchCount(String searchType, String keyword) throws Exception;
 	
 	//bboard
 	

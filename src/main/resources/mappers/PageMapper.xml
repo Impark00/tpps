@@ -33,6 +33,41 @@ delete from tpps_aboard where ano = #{ano}
 ]]>
 </delete>
 
+<select id="listPageSearch" parameterType="hashMap" resultType="com.ps.tp.vo.PageVO">
+<![CDATA[
+select ano, atitle, adate, aview, awriter, achu from tpps_aboard
+]]>
+<if test='searchType.equals("atitle")'>
+WHERE title LIKE concat('%', #{keyword}, '%')
+</if>
+<if test='searchType.equals("acontent")'>
+WHERE content LIKE concat('%', #{keyword}, '%')
+</if>
+<if test='searchType.equals("atitle_acontent")'>
+WHERE title LIKE concat('%', #{keyword}, '%') or content LIKE concat('%', #{keyword}, '%')
+</if>
+<if test='searchType.equals("awriter")'>
+WHERE writer LIKE concat('%', #{keyword}, '%')
+</if>
+order by bno desc limit #{displayPost}, #{postNum}
+</select><!-- dao에서 문자열 데이터를 받을때 '%${keyword}%'는  '%'keyword'%' 에러가 발생할수 있다-->
+<select id="searchCount" parameterType="hashMap" resultType="int">
+<![CDATA[
+select count(bno) from tbl_board
+]]>
+<if test='searchType.equals("title")'>
+WHERE title LIKE concat('%', #{keyword}, '%')
+</if>
+<if test='searchType.equals("content")'>
+WHERE content LIKE concat('%', #{keyword}, '%')
+</if>
+<if test='searchType.equals("title_content")'>
+WHERE title LIKE concat('%', #{keyword}, '%') or content LIKE concat('%', #{keyword}, '%')
+</if>
+<if test='searchType.equals("writer")'>
+WHERE writer LIKE concat('%', #{keyword}, '%')
+</if>
+</select>
 
 
 

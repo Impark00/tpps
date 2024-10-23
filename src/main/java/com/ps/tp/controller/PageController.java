@@ -14,6 +14,8 @@ import com.ps.tp.service.CommentService;
 import com.ps.tp.service.PageService;
 import com.ps.tp.vo.CommentVO;
 import com.ps.tp.vo.PageVO;
+import com.spring.pagenation.domain.BoardVO;
+import com.spring.pagenation.domain.Page;
 
 
 @Controller
@@ -79,6 +81,34 @@ public class PageController {
 		return "redirect:/aboard/list";
 	}
 	
+	@GetMapping("/aboard/listtest")
+	public void getListPageSearch(Model model, @RequestParam(value="num", defaultValue="1") int num, 
+			@RequestParam(value="searchType", required = false, defaultValue="title") String searchType, 
+			@RequestParam(value="keyword", required = false, defaultValue="") String keyword) throws Exception{
+	
+	Page page = new Page();
+	
+	page.setNum(num);
+	page.setCount(pageservice.searchCount(searchType, keyword));
+	
+	//검색 타입과 검색어
+	page.setSearchType(searchType);
+	page.setKeyword(keyword);
+	
+	List<BoardVO> list = null;
+	list = service.listPageSearch(page.getDisplayPost(), page.getPostNum(), searchType, keyword);
+	
+	model.addAttribute("list", list);
+	model.addAttribute("page", page);
+	model.addAttribute("select", num);
+	
+	//
+	model.addAttribute("searchType", searchType);
+	model.addAttribute("keyword", keyword);
+	}
+
+
+
 	
 	
 	

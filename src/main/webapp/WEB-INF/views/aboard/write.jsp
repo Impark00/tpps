@@ -21,7 +21,12 @@
 	</label>
 <textarea name="acontent" class="form-control" placeholder="내용을 적어주세요"></textarea>
 </div>
+<c:if test ="${userinfo != null }">
 <input type="hidden" name="awriter" class="form-control" value="${userinfo.userId}"/>
+</c:if>
+<c:if test ="${userinfo == null }">
+<input type="hidden" name="awriter" class="form-control" value="익명"/>
+</c:if>
 <div class="d-flex justify-content-end my-5">
 <button type="submit" class="btn btn-outline-primary">전송</button>
 </div>
