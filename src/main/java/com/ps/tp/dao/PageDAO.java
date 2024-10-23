@@ -7,7 +7,6 @@ import com.ps.tp.vo.PageVO;
 public interface PageDAO {
 
 	//aboard
-	public List<PageVO> alist() throws Exception;
 	
 	public void awrite(PageVO vo) throws Exception;
 	
@@ -17,6 +16,9 @@ public interface PageDAO {
 	
 	public void adelete(int ano) throws Exception;
 	
+	public List<PageVO> alistPageSearch(int displayPost, int postNum, String searchType, String keyword) throws Exception;
+
+	public int asearchCount(String searchType, String keyword) throws Exception;
 	
 	//bboard
 	

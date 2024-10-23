@@ -19,7 +19,7 @@
 	<label class="form-label w-25">
 	날짜
 	</label>
-	<label class="form-label w-75">${view.adate}</label>
+	<fmt:formatDate value="${view.adate}" pattern="yyyy-MM-dd"/>
 </div>
 <hr/>
 <div class="input-group mb-3">
@@ -64,17 +64,25 @@
 	</ul>
 
 <form method="post" action="/acom/write">
-<div class="input-group my-5">
-	<label class="form-label">
-	댓글 작성자
-	</label>
-	<input type="text" class="form-control" name="arwriter">
+<div class="input-group my-2">
+<p>Comment</p>
 </div>
 <textarea class="form-control" name="arcontent"></textarea>
+
+<c:if test ="${userinfo != null }">
+<input type="hidden" name="arwriter" class="form-control" value="${userinfo.userId}"/>
 <input type="hidden" name="ano" value="${view.ano}">
 <div class="my-3 d-flex justify-content-end">
 <input type="submit" value="댓글작성" class="btn btn-light"/>
 </div>
+</c:if>
+<c:if test ="${userinfo == null }">
+<div class="my-3 d-flex justify-content-end">
+<a href="/signin" class="btn btn-light">댓글작성</a>
+</div>
+</c:if>
+
+
 </form>
 
 

@@ -13,6 +13,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import com.ps.tp.service.CommentService;
 import com.ps.tp.service.PageService;
 import com.ps.tp.vo.CommentVO;
+import com.ps.tp.vo.Page;
 import com.ps.tp.vo.PageVO;
 
 
@@ -29,14 +30,6 @@ public class PageController {
 		return "home";
 	}
 //aboard
-	@GetMapping(value="/aboard/list")
-		public void getalist(Model model) throws Exception{
-		
-		List<PageVO> list = null;
-		list = pageservice.alist();
-		
-		model.addAttribute("list", list);
-	}
 	
 	@GetMapping("/aboard/write")
 	public void getaWrite() throws Exception{		
@@ -79,6 +72,34 @@ public class PageController {
 		return "redirect:/aboard/list";
 	}
 	
+	@GetMapping("/aboard/list")
+	public void getListPageSearch(Model model, @RequestParam(value="num", defaultValue="1") int num, 
+			@RequestParam(value="searchType", required = false, defaultValue="title") String searchType, 
+			@RequestParam(value="keyword", required = false, defaultValue="") String keyword) throws Exception{
+	
+	Page page = new Page();
+	
+	page.setNum(num);
+	page.setCount(pageservice.asearchCount(searchType, keyword));
+	
+	//검색 타입과 검색어	
+	page.setSearchType(searchType);
+	page.setKeyword(keyword);
+	
+	List<PageVO> list = null;
+	list = pageservice.alistPageSearch(page.getDisplayPost(), page.getPostNum(), searchType, keyword);
+	
+	model.addAttribute("list", list);
+	model.addAttribute("page", page);
+	model.addAttribute("select", num);
+	
+	//
+	model.addAttribute("searchType", searchType);
+	model.addAttribute("keyword", keyword);
+	}
+
+
+
 	
 	
 	
