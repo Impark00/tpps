@@ -26,10 +26,11 @@ public class UserController {
 		return "userinfo/signup";
 	}
 	
-	@PostMapping(value="/idcheck")
-	public ResponseEntity<Integer> idCheck(@RequestBody String userId) throws Exception{
+	@PostMapping(value="/idcheck", produces="application/json")
+	public ResponseEntity<Integer> idCheck(@RequestBody UserVO userId) throws Exception{
+		
 		int checkedId=service.idCheck(userId);
-		return ResponseEntity.ok(checkedId);
+		return ResponseEntity.ok().body(checkedId);
 	}
 	
 	@PostMapping(value="/signup")

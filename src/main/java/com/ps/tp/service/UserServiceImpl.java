@@ -26,8 +26,8 @@ public class UserServiceImpl implements UserService {
 	}
 	
 	@Override
-	public int idCheck(String userId) throws Exception {
-		if(dao.idCheck(userId)==0) {
+	public int idCheck(UserVO userId) throws Exception {
+		if(dao.idCheck(userId)==1) {
 			return 1;
 		}else {
 			return 0;
