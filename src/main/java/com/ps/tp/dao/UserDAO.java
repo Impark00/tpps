@@ -9,4 +9,6 @@ public interface UserDAO {
 	void signup(UserVO vo) throws Exception;
 	
 	UserVO signin(UserVO vo) throws Exception;
+	
+	UserVO viewUserInfo(String vo) throws Exception;
 }
