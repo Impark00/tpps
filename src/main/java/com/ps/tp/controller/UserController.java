@@ -6,6 +6,7 @@ import javax.servlet.http.HttpSession;
 
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -53,6 +54,7 @@ public class UserController {
 		switch(service.signin(vo)) {
 		case 1:
 			session.setAttribute("userinfo", vo);
+			session.setMaxInactiveInterval(1800);
 			return "redirect:/";
 		case 0:
 			session.setAttribute("userinfo", null);
@@ -72,4 +74,12 @@ public class UserController {
 		return "redirect:/";
 	}
 	
+	@GetMapping(value="/mypage")
+	public String getMypage(HttpSession session,Model model) throws Exception{
+		UserVO user=(UserVO) session.getAttribute("userinfo");
+		String userId=user.getUserId();
+		user=service.viewUserInfo(userId);
+		model.addAttribute("user",user);
+		return "userinfo/mypage";
+	}
 }

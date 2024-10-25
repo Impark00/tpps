@@ -30,4 +30,9 @@ public class UserDAOImpl implements UserDAO {
 		return sql.selectOne(namespace+".signin", vo);
 	}
 
+	@Override
+	public UserVO viewUserInfo(String vo) throws Exception {
+		return sql.selectOne(namespace+".viewUserInfo",vo);
+	}
+	
 }

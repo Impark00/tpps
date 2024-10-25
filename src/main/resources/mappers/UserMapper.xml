@@ -10,4 +10,7 @@
 <select id="signin" resultType="com.ps.tp.vo.UserVO">
 	<![CDATA[SELECT userId,userPassword,verify FROM tpps_user WHERE userId=#{userId}]]>
 </select>
+<select id="viewUserInfo" resultType="com.ps.tp.vo.UserVO">
+	<![CDATA[SELECT * FROM tpps_user WHERE userId=#{userId}]]>
+</select>
 </mapper>

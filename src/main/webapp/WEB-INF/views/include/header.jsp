@@ -47,7 +47,7 @@
 						<span class="fw-bold">${userinfo.userId}&nbsp;님 환영합니다</span>
 					</li>
 					<li class="nav-item">
-						<a class="nav-link" href="#">마이페이지</a>
+						<a class="nav-link" href="/mypage">마이페이지</a>
 					</li>
 					<li class="nav-item">
 						<a class="nav-link" href="/logout">logout</a>

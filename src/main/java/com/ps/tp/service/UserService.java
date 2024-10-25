@@ -13,4 +13,6 @@ public interface UserService {
 	int signin(UserVO vo) throws Exception;
 	
 	void logout(HttpSession session) throws Exception;
+	
+	UserVO viewUserInfo(String vo) throws Exception;
 }
