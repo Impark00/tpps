@@ -27,7 +27,7 @@
 	날짜
 	</label>
 	<label class="form-label w-25">
-	<fmt:formatDate value="${view.adate}" pattern="yyyy-MM-dd"/>
+	<fmt:formatDate value="${view.adate}" pattern="yyyy-MM-dd HH:mm:ss"/>
 	</label>
 	<label class="form-label w-25">
 	작성자
