@@ -14,29 +14,6 @@
 
 <title>COMU</title>
 
-<nav class="navbar navbar-expand-sm bg-light">
-	<div class="container-fluid w-100">
-		<a class="navbar-brand" href="${path}/">COMU</a>
-		<button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#mynavbar">
-			<span class="navbar-toggler-icon"></span>
-		</button>
-		<div class="collapse navbar-collapse" id="mynavbar">
-			<ul class="navbar-nav mb-2 mb-lg-0 me-auto">
-				<li class="nav-item">
-					<a class="nav-link" href="${path}/aboard/list">alist</a>
-				</li>
-				<li class="nav-item">
-					<a class="nav-link" href="${path}/bboard/list">blist</a>
-				</li>
-			</ul>
-			<form class="dflex btn-group">
-				<input class="form-control" type="text" placeholder="Search">
-				<button class="btn btn-primary" type="button">Search</button>
-			</form>
-		</div>
-	</div>
-</nav>
-
 <style>
         /* 헤더 스타일 추가 */
         .navbar {
@@ -57,11 +34,20 @@
         <a class="navbar-brand" href="${path}/">COMU</a>
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#mynavbar">
             <span class="navbar-toggler-icon"></span>
-        <
-            
+        </button>
+        <div class="collapse navbar-collapse" id="mynavbar">
+            <ul class="navbar-nav mb-2 mb-lg-0 me-auto">
+            	<li class="nav-item">
+            		<a class="nav-link" href="${path}/aboard/list">alist</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="${path}/bboard/list">blist</a>
+                </li>
             </ul>
-       
+            <form class="dflex btn-group">
+                <input class="form-control" type="text" placeholder="Search">
+                <button class="btn btn-primary" type="button">Search</button>
+            </form>
         </div>
     </div>
 </nav>
->>>>>>> 175df1ae0cc0c62e56c54679bfb565cde90bf532
