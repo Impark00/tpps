@@ -17,6 +17,14 @@ select ano, atitle, acontent, adate, aview, achu, awriter from tpps_aboard where
 
 </select>
 
+<update id="aviewcount" parameterType="int">
+ UPDATE tpps_aboard SET aview = aview + 1 WHERE ano = #{ano}
+</update>
+
+<update id="achu" parameterType="int">
+ update tpps_aboard set achu = achu +1 where ano = #{ano}
+</update>
+
 <update id="amodify" parameterType="com.ps.tp.vo.PageVO">
 <![CDATA[
 update tpps_aboard set atitle = #{atitle}, acontent=#{acontent} where ano = #{ano}

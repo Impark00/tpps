@@ -21,7 +21,11 @@ public interface PageService {
 	
 	
 	public int asearchCount(String searchType, String keyword) throws Exception;
-		
+
+	public void aviewcount(int ano) throws Exception;
+	
+	public void achu(int ano) throws Exception;
+	
 	//bboard
 	public List<PageVO> blist() throws Exception;
 
