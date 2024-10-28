@@ -8,9 +8,9 @@ $(document).ready(function(){
 			url:"/idcheck",
 			contentType:"application/json; charset=UTF-8",
 			dataType:"json",
-			data:JSON.stringify({userId:userId}),
+			data:JSON.stringify({userId}),
 			success:function(idCheck){
-				if(idCheck===1){
+				if(idCheck==0){
 					$("#checkResult").text("사용가능");
 				}else{
 					$("#checkResult").text("이미 사용중");

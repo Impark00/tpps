@@ -3,6 +3,14 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"  %>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"  %>
 <jsp:include page="../include/header.jsp" flush="false"/>
+<style>
+    .custom-link {
+        color: #333333; /* 링크 색상 */
+        text-decoration: none; /* 기본 밑줄 제거 */
+        transition: color 0.3s; /* 색상 변화 애니메이션 */
+    }
+</style>
+
 <div class="container">
 <div class="row">
 <div class="col-md-12">
@@ -24,7 +32,7 @@
 <c:forEach items="${list}" var="list">
  <tr>
   <td class="text-center">${list.ano}</td>
-  <td><a href="/aboard/view?ano=${list.ano} ">${list.atitle}</a></td>
+  <td><a href="/aboard/view?ano=${list.ano}" class="custom-link">${list.atitle}</a></td>
   <td class="text-center"><fmt:formatDate value="${list.adate}" pattern="yyyy-MM-dd"/></td>
   <td class="text-center">${list.aview}</td>
   <td class="text-center">${list.achu}</td>
@@ -67,11 +75,7 @@
 <c:if test="${page.next}">
 <li class="page-item"><a href="/aboard/list?num=${page.endPageNum + 1 }${page.searchTypeKeyword}" class="page-link">[다음]</a></li>
 </c:if>
-	<%-- <c:forEach begin='1' end="${pageNum}" var="num">
-	<span>
-	<a href="/board/listPage?num=${num}">${num}</a>
-	</span>
-	</c:forEach>--%>
+
 </ul>
 </div>
 

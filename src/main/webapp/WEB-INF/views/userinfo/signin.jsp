@@ -10,7 +10,7 @@
 		<input type="text" name="userId" placeholder="아이디" class="form-control my-5">
 	</div>
 	<div class="form-group">
-		<input type="text" name="userPassword" placeholder="비밀번호" class="form-control my-5">
+		<input type="password" name="userPassword" placeholder="비밀번호" class="form-control my-5">
 	</div>
 	<div class="form-group d-flex">
 		<a href="/signup" class="form-control">회원가입</a>

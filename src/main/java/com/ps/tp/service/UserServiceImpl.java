@@ -1,4 +1,4 @@
-package com.ps.tp.service;
+	package com.ps.tp.service;
 
 import javax.inject.Inject;
 import javax.servlet.http.HttpSession;
@@ -26,8 +26,8 @@ public class UserServiceImpl implements UserService {
 	}
 	
 	@Override
-	public int idCheck(String userId) throws Exception {
-		if(dao.idCheck(userId)==0) {
+	public int idCheck(UserVO userId) throws Exception {
+		if(dao.idCheck(userId)==1) {
 			return 1;
 		}else {
 			return 0;
@@ -67,6 +67,11 @@ public class UserServiceImpl implements UserService {
 	@Override
 	public void logout(HttpSession session) throws Exception {
 		session.invalidate();
+	}
+
+	@Override
+	public UserVO viewUserInfo(String vo) throws Exception {
+		return dao.viewUserInfo(vo);
 	}
 
 }
