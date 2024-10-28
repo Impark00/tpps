@@ -82,4 +82,13 @@ public class UserController {
 		model.addAttribute("user",user);
 		return "userinfo/mypage";
 	}
+	
+	@GetMapping(value="/modifyuser")
+	public String getModifyuser(HttpSession session,Model model) throws Exception{
+		UserVO user=(UserVO)session.getAttribute("userinfo");
+		String userId=user.getUserId();
+		user=service.viewUserInfo(userId);
+		model.addAttribute("user",user);
+		return "userinfo/modifyuser";
+	}
 }

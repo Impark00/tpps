@@ -1,11 +1,12 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"  %>
 <jsp:include page="../include/header.jsp" flush="false"/>
 
 <div class="container">
 <div class="row">
 <div class="col-md-12">
-<h3>회원정보</h3>
+<h3 class="mt-5 mb-3">회원정보</h3>
 <div class="d-inline-flex">
 	<ul class="list-group">
 		<li class="list-group-item">아이디 : ${user.userId}</li>
@@ -14,9 +15,15 @@
 		<li class="list-group-item">이메일 : ${user.userEmail}</li>
 	</ul>
 </div>
+<a href="/modifyuser" type="button" class="mt-5 btn btn-primary">회원정보 수정</a>
+<button type="button" id="acountDelete" class="mt-5 d-block btn btn-danger">탈퇴하기</button>
 
-<a href="/" class="mt-5 d-block text-decoration-none">돌아가기</a>
 
+
+<div>
+	<h4>내가 쓴 글</h4>
+	
+</div>
 </div>
 </div>
 </div>
