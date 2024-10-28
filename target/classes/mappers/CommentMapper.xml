@@ -1,5 +1,30 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.ps.tp.mappers.CommentMapper">
-
+<select id="areplyList" parameterType="int" resultType="com.ps.tp.vo.CommentVO">
+<![CDATA[   
+select arno, ano, arwriter, arcontent, ardate
+from tpps_acom
+where ano = #{ano}
+]]>   
+</select>
+<insert id="areplyWrite" parameterType="com.ps.tp.vo.CommentVO">
+<![CDATA[   
+insert into tpps_acom(arno, ano, arwriter, arcontent)
+values(tpps_acom_seq.nextval, #{ano}, #{arwriter}, #{arcontent})
+]]>
+</insert>
+<update id="areplyModify" parameterType="com.ps.tp.vo.CommentVO">
+<![CDATA[   
+update tpps_acom set arwriter = #{arwriter}, arcontent = #{arcontent} where arno = #{arno} and ano = #{ano}
+]]>
+</update>
+<delete id="areplyDelete" parameterType="com.ps.tp.vo.CommentVO">
+<![CDATA[
+delete from tpps_acom where arno = #{arno} and ano = ${ano}
+]]>
+</delete>
+<select id="areplySelect" parameterType="com.ps.tp.vo.CommentVO" resultType="com.ps.tp.vo.CommentVO">
+select arno, ano, arwriter, arcontent, ardate from tpps_acom where ano = #{ano} and arno = #{arno}
+</select>
 </mapper>
