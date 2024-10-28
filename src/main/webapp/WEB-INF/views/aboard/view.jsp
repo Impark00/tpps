@@ -101,7 +101,11 @@
 
 
 </form>
-
+<c:if test="${not empty message}">
+    <div class="alert alert-warning" role="alert">
+        ${message}
+    </div>
+</c:if>
 
 
 </div>

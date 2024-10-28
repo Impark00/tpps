@@ -1,14 +1,18 @@
 package com.ps.tp.controller;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.inject.Inject;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.ps.tp.service.CommentService;
 import com.ps.tp.service.PageService;
@@ -42,9 +46,21 @@ public class PageController {
 	}
 	
 	@GetMapping("/aboard/view")
-	public void getaView(@RequestParam("ano") int ano, Model model) throws Exception{
-		pageservice.aviewcount(ano);
-		
+	public void getaView(@RequestParam("ano") int ano, Model model, HttpServletRequest req) throws Exception {
+	    HttpSession session = req.getSession();
+
+	    List<Integer> viewedPosts = (List<Integer>) session.getAttribute("viewedPosts");
+	    
+	    if (viewedPosts == null) {
+	        viewedPosts = new ArrayList<>();
+	    }
+	    
+	    if (!viewedPosts.contains(ano)) {
+	        pageservice.aviewcount(ano); // 조회수 증가
+	        viewedPosts.add(ano); // 조회한 게시글 ID 추가
+	        session.setAttribute("viewedPosts", viewedPosts); // 세션에 저장
+	    }
+	    
 		PageVO vo = pageservice.aview(ano);
 		model.addAttribute("view", vo);
 		
@@ -100,14 +116,29 @@ public class PageController {
 	model.addAttribute("keyword", keyword);
 	}
 
-
 	@PostMapping("/aboard/achu")
-	public String postachu(@RequestParam("ano") int ano) throws Exception {
-		pageservice.achu(ano);
-		return "redirect:/aboard/view?ano=" + ano;
-	}
+	public String postachu(@RequestParam("ano") int ano, HttpServletRequest req, RedirectAttributes rttr) throws Exception {
+	    HttpSession session = req.getSession();
 
-	
+	    // 세션에서 추천한 게시글 리스트 가져오기
+	    List<Integer> likedPosts = (List<Integer>) session.getAttribute("likedPosts");
+
+	    // 처음 추천하는 경우 (리스트가 null)
+	    if (likedPosts == null) {
+	        likedPosts = new ArrayList<>();
+	    }
+
+	    // 이미 추천한 게시글인지 확인
+	    if (!likedPosts.contains(ano)) {
+	        pageservice.achu(ano); // 추천수 증가
+	        likedPosts.add(ano); // 추천한 게시글 ID 추가
+	        session.setAttribute("likedPosts", likedPosts); // 세션에 저장
+	    }else {
+	        rttr.addFlashAttribute("message", "이미 추천한 게시글입니다."); // 메시지 추가
+	    }
+
+	    return "redirect:/aboard/view?ano=" + ano;
+	}
 	
 	
 	
