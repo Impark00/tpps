@@ -67,11 +67,7 @@
 <c:if test="${page.next}">
 <li class="page-item"><a href="/aboard/list?num=${page.endPageNum + 1 }${page.searchTypeKeyword}" class="page-link">[다음]</a></li>
 </c:if>
-	<%-- <c:forEach begin='1' end="${pageNum}" var="num">
-	<span>
-	<a href="/board/listPage?num=${num}">${num}</a>
-	</span>
-	</c:forEach>--%>
+
 </ul>
 </div>
 

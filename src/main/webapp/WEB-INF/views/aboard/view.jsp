@@ -9,17 +9,32 @@
 <h1 class="my-5">게시물 보기</h1>
 
 <div class="input-group my-3">
-	<label class="form-label w-25">
-	제목
-	</label>
-	<label class="form-label w-75">${view.atitle}</label>
+    <label class="form-label w-10">
+        제목:
+    </label>
+    <div class="w-65 text-center mx-auto">
+        ${view.atitle}
+    </div>
+    <label class="form-label w-25">
+        추천 수 &nbsp;&nbsp;&nbsp; ${view.achu}
+    </label>
 </div>
 <hr/>
+
 <div class="input-group mb-3">
+
 	<label class="form-label w-25">
 	날짜
 	</label>
+	<label class="form-label w-25">
 	<fmt:formatDate value="${view.adate}" pattern="yyyy-MM-dd"/>
+	</label>
+	<label class="form-label w-25">
+	작성자
+	</label>
+	<label class="form-label w-25">
+	${view.awriter}
+	</label>
 </div>
 <hr/>
 <div class="input-group mb-3">
@@ -29,19 +44,21 @@
 	<label class="form-label w-75">${view.acontent}</label>
 </div>
 <hr/>
-<div class="input-group mb-3">
-	<label class="form-label w-25">
-	작성자
-	</label>
-	<label class="form-label w-75">${view.awriter}</label>
-</div>
-<hr/>
-<div class="d-flex justify-content-end my-5">
-	<div class="btn-group">
-		<a class="btn btn-outline-primary" href="/aboard/list">목록</a>
-		<a class="btn btn-outline-success" href="/aboard/modify?ano=${view.ano}">수정</a>
-		<a class="btn btn-outline-danger" href="/aboard/delete?ano=${view.ano}">삭제</a>
-	</div>
+
+<div class="d-flex justify-content-between my-5">
+    <div class="me-2">
+        <c:if test="${userinfo != null}">
+            <form method="post" action="/aboard/achu">
+                <input type="hidden" name="ano" value="${view.ano}"/>
+                <input type="submit" value="추천" class="btn btn-outline-secondary"/>
+            </form>
+        </c:if>
+    </div>
+    <div class="btn-group">
+        <a class="btn btn-outline-primary" href="/aboard/list">목록</a>
+        <a class="btn btn-outline-success" href="/aboard/modify?ano=${view.ano}">수정</a>
+        <a class="btn btn-outline-danger" href="/aboard/delete?ano=${view.ano}">삭제</a>
+    </div>
 </div>
 
 <!-- comment -->

@@ -55,8 +55,13 @@ public class PageServiceImpl implements PageService {
 		return page.asearchCount(searchType, keyword);
 	}
 
-	
+	public void aviewcount(int ano) throws Exception {
+		page.aviewcount(ano);
+	}
 
+	public void achu(int ano) throws Exception {
+		page.achu(ano);
+	}
 	
 	//bboard
 	@Override

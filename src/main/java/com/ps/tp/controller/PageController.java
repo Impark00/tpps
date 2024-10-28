@@ -43,6 +43,8 @@ public class PageController {
 	
 	@GetMapping("/aboard/view")
 	public void getaView(@RequestParam("ano") int ano, Model model) throws Exception{
+		pageservice.aviewcount(ano);
+		
 		PageVO vo = pageservice.aview(ano);
 		model.addAttribute("view", vo);
 		
@@ -99,6 +101,11 @@ public class PageController {
 	}
 
 
+	@PostMapping("/aboard/achu")
+	public String postachu(@RequestParam("ano") int ano) throws Exception {
+		pageservice.achu(ano);
+		return "redirect:/aboard/view?ano=" + ano;
+	}
 
 	
 	

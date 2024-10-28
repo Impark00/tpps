@@ -67,6 +67,14 @@ public class PageDAOImpl implements PageDAO {
 		return sql.selectOne(namespace + ".asearchCount", data);
 	}
 	
+	public void aviewcount(int ano) throws Exception {
+		sql.update(namespace + ".aviewcount", ano);
+	}
+	
+	public void achu(int ano) throws Exception {
+		sql.update(namespace + ".achu", ano);
+	}
+	
 	
 	//bboard
 		@Override
