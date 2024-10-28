@@ -12,7 +12,7 @@
 	</div>
 	<div class="input-group mt-3">
 		<label>비밀번호</label>
-		<input type="password" value="${user.userPassword}" class="form-control">
+		<input type="password" placeholder="비밀번호" class="form-control">
 	</div>
 	<div class="input-group mt-3">
 		<label>유저 이름</label>
