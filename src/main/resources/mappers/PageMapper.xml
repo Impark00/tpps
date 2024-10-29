@@ -7,13 +7,13 @@
 
 <insert id="awrite" parameterType="com.ps.tp.vo.PageVO">
 <![CDATA[
-insert into tpps_aboard(ano, atitle, acontent,awriter) values (tpps_aboard_seq.nextval, #{atitle}, #{acontent}, #{awriter})
+insert into tpps_aboard(ano, atitle, acontent,awriter,atag) values (tpps_aboard_seq.nextval, #{atitle}, #{acontent}, #{awriter}, #{atag})
 ]]>
 </insert>
 
 <select id="aview" parameterType="int" resultType="com.ps.tp.vo.PageVO">
 
-select ano, atitle, acontent, adate, aview, achu, awriter from tpps_aboard where ano = #{ano}
+select ano, atitle, acontent, adate, aview, achu, awriter, atag from tpps_aboard where ano = #{ano}
 
 </select>
 
@@ -27,7 +27,7 @@ select ano, atitle, acontent, adate, aview, achu, awriter from tpps_aboard where
 
 <update id="amodify" parameterType="com.ps.tp.vo.PageVO">
 <![CDATA[
-update tpps_aboard set atitle = #{atitle}, acontent=#{acontent} where ano = #{ano}
+update tpps_aboard set atitle = #{atitle}, acontent=#{acontent}, atag=#{atag} where ano = #{ano}
 ]]>
 </update>
 <delete id="adelete" parameterType="int">
@@ -38,7 +38,7 @@ delete from tpps_aboard where ano = #{ano}
 
 <select id="alistPageSearch" parameterType="hashMap" resultType="com.ps.tp.vo.PageVO">
 <![CDATA[
-select ano, atitle, adate, aview, awriter, achu from tpps_aboard
+select ano, atitle, adate, aview, awriter, achu, atag from tpps_aboard
 ]]>
 <if test='searchType.equals("atitle")'>
 WHERE atitle LIKE '%' || #{keyword} || '%'

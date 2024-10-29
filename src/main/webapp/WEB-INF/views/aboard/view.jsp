@@ -7,16 +7,25 @@
 <div class="row">
 <div class="col-md-12">
 <h1 class="my-5">게시물 보기</h1>
+<style>
+.small-alert {
+    font-size: 0.85rem; /* 글자 크기 조정 */
+    padding: 0.5rem 1rem; /* 패딩 조정 */
+}
+</style>
 
 <div class="input-group my-3">
-    <label class="form-label w-10">
+    <label class="form-label w-25">
         제목:
     </label>
-    <div class="w-65 text-center mx-auto">
+    <div class="w-25">
         ${view.atitle}
     </div>
     <label class="form-label w-25">
         추천 수 &nbsp;&nbsp;&nbsp; ${view.achu}
+    </label>
+        <label class="form-label w-25">
+        태그 &nbsp;&nbsp;&nbsp; [${view.atag}]
     </label>
 </div>
 <hr/>
@@ -46,19 +55,25 @@
 <hr/>
 
 <div class="d-flex justify-content-between my-5">
-    <div class="me-2">
+    <div class="me-2 d-flex align-items-center">
         <c:if test="${userinfo != null}">
             <form method="post" action="/aboard/achu">
                 <input type="hidden" name="ano" value="${view.ano}"/>
                 <input type="submit" value="추천" class="btn btn-outline-secondary"/>
             </form>
         </c:if>
+                <c:if test="${not empty message}">
+            <div class="alert alert-warning mt-2 mb-2 ms-3 " role="alert">
+                ${message}
+            </div>
+        </c:if>
     </div>
-    <div class="btn-group">
+    <div class="btn-group d-flex align-items-center">
         <a class="btn btn-outline-primary" href="/aboard/list">목록</a>
         <a class="btn btn-outline-success" href="/aboard/modify?ano=${view.ano}">수정</a>
         <a class="btn btn-outline-danger" href="/aboard/delete?ano=${view.ano}">삭제</a>
     </div>
+     
 </div>
 
 <!-- comment -->
@@ -101,11 +116,7 @@
 
 
 </form>
-<c:if test="${not empty message}">
-    <div class="alert alert-warning" role="alert">
-        ${message}
-    </div>
-</c:if>
+
 
 
 </div>
