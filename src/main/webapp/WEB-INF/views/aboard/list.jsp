@@ -9,6 +9,7 @@
         text-decoration: none; /* 기본 밑줄 제거 */
         transition: color 0.3s; /* 색상 변화 애니메이션 */
     }
+    
 </style>
 
 <div class="container">
@@ -32,7 +33,12 @@
 <c:forEach items="${list}" var="list">
  <tr>
   <td class="text-center">${list.ano}</td>
-  <td><a href="/aboard/view?ano=${list.ano}" class="custom-link">${list.atitle}</a></td>
+  <td>
+                                <c:if test="${list.atag != '자유'}">
+                                   <span class="badge bg-secondary"> [${list.atag}]</span>
+                                </c:if>
+                                <a href="/aboard/view?ano=${list.ano}" class="custom-link">${list.atitle}</a>
+                            </td>
   <td class="text-center"><fmt:formatDate value="${list.adate}" pattern="yyyy-MM-dd"/></td>
   <td class="text-center">${list.aview}</td>
   <td class="text-center">${list.achu}</td>

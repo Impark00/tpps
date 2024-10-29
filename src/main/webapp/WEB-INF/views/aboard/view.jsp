@@ -15,14 +15,17 @@
 </style>
 
 <div class="input-group my-3">
-    <label class="form-label w-10">
+    <label class="form-label w-25">
         제목:
     </label>
-    <div class="w-65 text-center mx-auto">
+    <div class="w-25">
         ${view.atitle}
     </div>
     <label class="form-label w-25">
         추천 수 &nbsp;&nbsp;&nbsp; ${view.achu}
+    </label>
+        <label class="form-label w-25">
+        태그 &nbsp;&nbsp;&nbsp; [${view.atag}]
     </label>
 </div>
 <hr/>

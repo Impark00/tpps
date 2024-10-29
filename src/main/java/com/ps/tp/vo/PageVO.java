@@ -11,7 +11,15 @@ public class PageVO {
 	private int aview;
 	private int achu;
 	private String awriter;
+	private String atag;
 	
+	
+	public String getAtag() {
+		return atag;
+	}
+	public void setAtag(String atag) {
+		this.atag = atag;
+	}
 	private int bno;
 	private String btitle;
 	private String bcontent;
