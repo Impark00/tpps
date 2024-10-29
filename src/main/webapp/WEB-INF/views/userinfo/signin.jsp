@@ -1,24 +1,31 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <jsp:include page="../include/header.jsp" flush="false"/>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
-
+<style>
+    .custom-link {
+        color: #333333; /* 링크 색상 */
+        text-decoration: none; /* 기본 밑줄 제거 */
+        transition: color 0.3s; /* 색상 변화 애니메이션 */
+    }
+    
+</style>
 <div class="container">
-<div class="row">
-<div class="col-md-12">
-<form method="post">
-	<div class="form-group">
-		<input type="text" name="userId" placeholder="아이디" class="form-control my-5">
+<div class="row justify-content-center h-100">
+<div class="col-md-6 col-lg-4">
+<form method="post" class="card mt-5">
+	<div class="form-group d-flex justify-content-center">
+		<input type="text" name="userId" placeholder="아이디" class="form-control mt-5 mb-3 w-75">
 	</div>
-	<div class="form-group">
-		<input type="password" name="userPassword" placeholder="비밀번호" class="form-control my-5">
+	<div class="form-group d-flex justify-content-center">
+		<input type="password" name="userPassword" placeholder="비밀번호" class="form-control mb-5 w-75">
 	</div>
-	<div class="form-group d-flex">
-		<a href="/signup" class="form-control">회원가입</a>
-		<a href="#" class="form-control">아이디 찾기</a>
-		<a href="#" class="form-control">비밀번호 찾기</a>
+	<div class="form-group d-flex justify-content-evenly">
+		<a href="/signup" class="custom-link">회원가입</a>
+		<a href="#" class="custom-link">아이디 찾기</a>
+		<a href="#" class="custom-link">비밀번호 찾기</a>
 	</div>
 	<div class="d-flex justify-content-end">
-		<input type="submit" value="로그인" class="btn btn-outline-primary my-5">
+		<input type="submit" value="로그인" class="btn btn-outline-primary mt-5 mb-3 me-3">
 	</div>
 	<c:if test="${msg==0}">
 		<p class="text-danger d-flex justify-content-end">비밀번호가 다름</p>
