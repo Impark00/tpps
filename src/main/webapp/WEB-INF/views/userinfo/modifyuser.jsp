@@ -12,11 +12,15 @@
 	</div>
 	<div class="input-group mt-3">
 		<label>비밀번호</label>
+<<<<<<< HEAD
 		<input type="password" name="userPassword" placeholder="비밀번호" class="form-control">
 	</div>
 	<div class="input-group mt-3">
 		<label>비밀번호재입력</label>
 		<input type="password" name="userPasswordRe" placeholder="비밀번호재입력" class="form-control">
+=======
+		<input type="password" placeholder="비밀번호" class="form-control">
+>>>>>>> yu
 	</div>
 	<div class="input-group mt-3">
 		<label>유저 이름</label>

@@ -12,7 +12,11 @@
 <div class="card position-fixed top-1 start-1 my-5 p-3 border rounded">
 	<ul class="list-unstyled">
 		<li class=" mb-2 mb-lg-0 me-auto">
+<<<<<<< HEAD
 			<a href="/signin" class="text-decoration-none custom-link">로그인</a>/<a href="/signup" class="text-decoration-none custom-link">회원가입</a>
+=======
+			<a href="/signin" class="custom-link">로그인</a>/<a href="/signup" class="custom-link">회원가입</a>
+>>>>>>> yu
 		</li>
 	</ul>
 </div>
@@ -24,7 +28,11 @@
 			<span class="fw-bold">${userinfo.userId}&nbsp;님 환영합니다</span>
 		</li>
 		<li class="mb-2 mb-lg-0 me-auto">
+<<<<<<< HEAD
 			<a href="/mypage" class="text-decoration-none custom-link">마이페이지</a>/<a href="/logout" class="text-decoration-none custom-link">로그아웃</a>
+=======
+			<a href="/mypage" class="custom-link">마이페이지</a>/<a href="/logout" class="custom-link">로그아웃</a>
+>>>>>>> yu
 		</li>
 	</ul>
 </div>
