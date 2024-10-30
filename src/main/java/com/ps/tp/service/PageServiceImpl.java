@@ -43,16 +43,16 @@ public class PageServiceImpl implements PageService {
 
 	
 	@Override //목록 + 페이징 + 검색
-	public List<PageVO> alistPageSearch(int displayPost, int postNum, String searchType, String keyword) throws Exception {
+	public List<PageVO> alistPageSearch(int displayPost, int postNum, String searchType, String keyword, String atag) throws Exception {
 		
-		return page.alistPageSearch(displayPost, postNum, searchType, keyword);
+		return page.alistPageSearch(displayPost, postNum, searchType, keyword, atag);
 	}
 
 
 	@Override //게시물 총 개수 + 검색 적용
-	public int asearchCount(String searchType, String keyword) throws Exception {
+	public int asearchCount(String searchType, String keyword, String atag) throws Exception {
 		// TODO Auto-generated method stub
-		return page.asearchCount(searchType, keyword);
+		return page.asearchCount(searchType, keyword, atag);
 	}
 
 	public void aviewcount(int ano) throws Exception {
@@ -63,6 +63,9 @@ public class PageServiceImpl implements PageService {
 		page.achu(ano);
 	}
 	
+	public List<String> aTagList() throws Exception {
+		return page.aTagList();
+	}
 	//bboard
 	@Override
 	public List<PageVO> blist() throws Exception {

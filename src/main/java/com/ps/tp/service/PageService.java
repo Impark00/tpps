@@ -17,15 +17,16 @@ public interface PageService {
 	
 	public void adelete(int ano) throws Exception;
 	
-	public List<PageVO> alistPageSearch(int displayPost, int postNum, String searchType, String keyword) throws Exception;
+	public List<PageVO> alistPageSearch(int displayPost, int postNum, String searchType, String keyword, String atag) throws Exception;
 	
 	
-	public int asearchCount(String searchType, String keyword) throws Exception;
+	public int asearchCount(String searchType, String keyword, String atag) throws Exception;
 
 	public void aviewcount(int ano) throws Exception;
 	
 	public void achu(int ano) throws Exception;
 	
+	public List<String> aTagList() throws Exception ;
 	//bboard
 	public List<PageVO> blist() throws Exception;
 

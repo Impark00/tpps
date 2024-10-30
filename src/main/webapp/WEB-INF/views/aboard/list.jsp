@@ -1,6 +1,15 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"  %>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"  %>
+<%@ page import="java.util.ArrayList" %>
+<%
+    ArrayList<String> predefinedTags = new ArrayList<>();
+    predefinedTags.add("기본");
+    predefinedTags.add("공지");
+    predefinedTags.add("질문");
+    predefinedTags.add("정보");
+    request.setAttribute("predefinedTags", predefinedTags);
+%>
 
 <jsp:include page="../include/header.jsp" flush="false"/>
 <style>
@@ -41,6 +50,18 @@
 
 <div class="container mt-5">
     <h1 class="mb-4">목록</h1>
+    <div class="d-flex justify-content-center my-4">
+    <form action="/aboard/list" method="get" class="w-50">
+        <input type="hidden" name="searchType" value="${page.searchType}"/>
+        <input type="hidden" name="keyword" value="${page.keyword}"/>
+        <div class="btn-group" role="group" aria-label="Tag selection">
+            <button type="submit" name="atag" value="" class="btn btn-outline-secondary <c:if test="${page.atag == ''}">active</c:if>">모든 태그</button>
+            <c:forEach items="${predefinedTags}" var="pTag">
+                <button type="submit" name="atag" value="${pTag}" class="btn btn-outline-secondary <c:if test="${page.atag == pTag}">active</c:if>">${pTag}</button>
+            </c:forEach>
+        </div>
+    </form>
+</div>
     <table class="table table-striped table-hover">
         <colgroup>
             <col style="width:5%"/>

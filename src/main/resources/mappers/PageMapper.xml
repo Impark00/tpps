@@ -40,39 +40,66 @@ delete from tpps_aboard where ano = #{ano}
 <![CDATA[
 select ano, atitle, adate, aview, awriter, achu, atag from tpps_aboard
 ]]>
-<if test='searchType.equals("atitle")'>
-WHERE atitle LIKE '%' || #{keyword} || '%'
-</if>
-<if test='searchType.equals("acontent")'>
-WHERE acontent LIKE '%' || #{keyword} || '%'
-</if>
-<if test='searchType.equals("atitle_acontent")'>
-WHERE atitle LIKE '%' || #{keyword} || '%' or acontent LIKE '%' || #{keyword} || '%'
-</if>
-<if test='searchType.equals("awriter")'>
-WHERE awriter LIKE '%' || #{keyword} || '%'
-</if>
+<where>
+  <if test='searchType != null'>
+    <if test='searchType.equals("atitle")'>
+      atitle LIKE '%' || #{keyword} || '%' 
+    </if>
+    <if test='searchType.equals("acontent")'>
+      acontent LIKE '%' || #{keyword} || '%' 
+    </if>
+    <if test='searchType.equals("atitle_acontent")'>
+      (atitle LIKE '%' || #{keyword} || '%' OR acontent LIKE '%' || #{keyword} || '%')
+    </if>
+    <if test='searchType.equals("awriter")'>
+      awriter LIKE '%' || #{keyword} || '%' 
+    </if>
+  </if>
+  <if test='atag != null and atag != ""'>
+    <if test='searchType == null'>
+      atag = #{atag}
+    </if>
+    <if test='searchType != null'>
+      AND atag = #{atag}
+    </if>
+  </if>
+</where>
 order by ano desc OFFSET #{displayPost} ROWS FETCH NEXT #{postNum} ROWS ONLY
-</select><!-- dao에서 문자열 데이터를 받을때 '%${keyword}%'는  '%'keyword'%' 에러가 발생할수 있다-->
+</select>
+
 <select id="asearchCount" parameterType="hashMap" resultType="int">
 <![CDATA[
 select count(ano) from tpps_aboard
 ]]>
 <if test='searchType.equals("atitle")'>
-WHERE atitle LIKE '%' || #{keyword} || '%'
+    WHERE atitle LIKE '%' || #{keyword} || '%' 
+    <if test='atag != null and atag != ""'>
+        AND atag = #{atag}
+    </if>
 </if>
 <if test='searchType.equals("acontent")'>
-WHERE acontent LIKE '%' || #{keyword} || '%'
+    WHERE acontent LIKE '%' || #{keyword} || '%' 
+    <if test='atag != null and atag != ""'>
+        AND atag = #{atag}
+    </if>
 </if>
 <if test='searchType.equals("atitle_acontent")'>
-WHERE atitle LIKE '%' || #{keyword} || '%' or acontent LIKE '%' || #{keyword} || '%'
+    WHERE atitle LIKE '%' || #{keyword} || '%' OR acontent LIKE '%' || #{keyword} || '%' 
+    <if test='atag != null and atag != ""'>
+        AND atag = #{atag}
+    </if>
 </if>
 <if test='searchType.equals("awriter")'>
-WHERE awriter LIKE '%' || #{keyword} || '%'
+    WHERE awriter LIKE '%' || #{keyword} || '%' 
+    <if test='atag != null and atag != ""'>
+        AND atag = #{atag}
+    </if>
 </if>
 </select>
 
-
+<select id="aTagList" resultType="String">
+    SELECT DISTINCT atag FROM tpps_aboard WHERE atag IS NOT NULL
+</select>
 
 <!-- Bboard -->
 <select id="blist" resultType="com.ps.tp.vo.PageVO">
