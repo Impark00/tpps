@@ -7,7 +7,7 @@ public class UserVO {
 	private String userPassword;
 	private String userPasswordRe;
 	private String userName;
-	private int userPhone;
+	private String userPhone;
 	private String userEmail;
 	private Date userRegDate;
 	private int verify;
@@ -24,7 +24,7 @@ public class UserVO {
 	public String getUserName() {
 		return userName;
 	}
-	public int getUserPhone() {
+	public String getUserPhone() {
 		return userPhone;
 	}
 	public String getUserEmail() {
@@ -48,7 +48,7 @@ public class UserVO {
 	public void setUserName(String userName) {
 		this.userName = userName;
 	}
-	public void setUserPhone(int userPhone) {
+	public void setUserPhone(String userPhone) {
 		this.userPhone = userPhone;
 	}
 	public void setUserEmail(String userEmail) {
