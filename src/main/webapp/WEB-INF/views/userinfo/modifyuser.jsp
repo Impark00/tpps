@@ -8,23 +8,27 @@
 <div class="card">
 	<div class="input-group mt-3">
 		<label>아이디</label>
-		<input type="text" value="${user.userId}" class="form-control">
+		<input type="text" name="userId" value="${user.userId}" class="form-control">
 	</div>
 	<div class="input-group mt-3">
 		<label>비밀번호</label>
-		<input type="password" value="${user.userPassword}" class="form-control">
+		<input type="password" name="userPassword" placeholder="비밀번호" class="form-control">
+	</div>
+	<div class="input-group mt-3">
+		<label>비밀번호재입력</label>
+		<input type="password" name="userPasswordRe" placeholder="비밀번호재입력" class="form-control">
 	</div>
 	<div class="input-group mt-3">
 		<label>유저 이름</label>
-		<input type="text" value="${user.userName}" class="form-control">
+		<input type="text" name="userName" value="${user.userName}" class="form-control">
 	</div>
 	<div class="input-group mt-3">
 		<label>유저 전화번호</label>
-		<input type="text" value="${user.userPhone}" class="form-control">
+		<input type="text" name="userPhone" value="${user.userPhone}" class="form-control">
 	</div>
 	<div class="input-group mt-3">
 		<label>유저 이메일</label>
-		<input type="email" value="${user.userEmail}" class="form-control">
+		<input type="email" name="userEmail" value="${user.userEmail}" class="form-control">
 	</div>
 	<div class="input-group mt-3 d-flex justify-content-end">
 		<input type="submit" value="수정" class="btn btn-primary">

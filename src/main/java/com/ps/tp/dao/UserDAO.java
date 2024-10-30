@@ -11,4 +11,6 @@ public interface UserDAO {
 	UserVO signin(UserVO vo) throws Exception;
 	
 	UserVO viewUserInfo(String vo) throws Exception;
+	
+	void modifyUserInfo(UserVO vo) throws Exception;
 }

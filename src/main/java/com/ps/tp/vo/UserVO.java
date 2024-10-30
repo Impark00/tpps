@@ -11,6 +11,7 @@ public class UserVO {
 	private String userEmail;
 	private Date userRegDate;
 	private int verify;
+	
 	public String getUserId() {
 		return userId;
 	}

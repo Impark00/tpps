@@ -91,4 +91,12 @@ public class UserController {
 		model.addAttribute("user",user);
 		return "userinfo/modifyuser";
 	}
+	
+	@PostMapping(value="/modifyuser")
+	public String postModifyuser(UserVO vo) throws Exception{
+		service.modifyUserInfo(vo);
+		return "redirect:/mypage";
+	}
+	
+	
 }

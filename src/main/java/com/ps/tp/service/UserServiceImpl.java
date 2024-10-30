@@ -74,4 +74,16 @@ public class UserServiceImpl implements UserService {
 		return dao.viewUserInfo(vo);
 	}
 
+	@Override
+	public void modifyUserInfo(UserVO vo) throws Exception {
+		String inputpass=vo.getUserPassword();
+		String pass=encoder.encode(inputpass);
+		vo.setUserPassword(pass);
+		
+		String inputpassRe=vo.getUserPasswordRe();			
+		String passRe=encoder.encode(inputpassRe);
+		vo.setUserPasswordRe(passRe);
+		dao.modifyUserInfo(vo);
+	}
+
 }
