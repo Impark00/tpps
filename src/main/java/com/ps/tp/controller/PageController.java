@@ -1,6 +1,7 @@
 package com.ps.tp.controller;
 
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 import javax.inject.Inject;
@@ -61,6 +62,7 @@ public class PageController {
 	        session.setAttribute("viewedPosts", viewedPosts); // 세션에 저장
 	    }
 	    
+	    model.addAttribute("now", new Date());
 		PageVO vo = pageservice.aview(ano);
 		model.addAttribute("view", vo);
 		
@@ -68,6 +70,7 @@ public class PageController {
 		comment = commentservice.alist(ano);
 		model.addAttribute("comment", comment);
 
+		
 	}
 		
 	
