@@ -69,7 +69,7 @@
             <!-- 네비게이션 버튼 -->
             <div class="btn-group d-flex align-items-center">
                 <a class="btn btn-outline-primary" href="/aboard/list">목록</a>
-                <c:if test="${userinfo.userId == view.awriter }">
+                <c:if test="${userinfo.userId == view.awriter || userinfo.verify == 9 }">
                 <a class="btn btn-outline-success" href="/aboard/modify?ano=${view.ano}">수정</a>
                 <a class="btn btn-outline-danger" href="/aboard/delete?ano=${view.ano}">삭제</a>
                 </c:if>
