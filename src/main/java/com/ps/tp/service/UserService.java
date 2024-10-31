@@ -10,7 +10,7 @@ public interface UserService {
 	
 	void signup(UserVO vo) throws Exception;
 	
-	int signin(UserVO vo) throws Exception;
+	UserVO signin(UserVO vo) throws Exception;
 	
 	void logout(HttpSession session) throws Exception;
 	
