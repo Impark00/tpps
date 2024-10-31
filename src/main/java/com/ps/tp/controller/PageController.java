@@ -96,25 +96,30 @@ public class PageController {
 	@GetMapping("/aboard/list")
 	public void getListPageSearch(Model model, @RequestParam(value="num", defaultValue="1") int num, 
 			@RequestParam(value="searchType", required = false, defaultValue="title") String searchType, 
-			@RequestParam(value="keyword", required = false, defaultValue="") String keyword) throws Exception{
+			@RequestParam(value="keyword", required = false, defaultValue="") String keyword,
+		 @RequestParam(value="atag", required = false, defaultValue="") String atag) throws Exception{
 	
 	Page page = new Page();
 	
 	page.setNum(num);
-	page.setCount(pageservice.asearchCount(searchType, keyword));
+	page.setCount(pageservice.asearchCount(searchType, keyword, atag));
 	
 	//검색 타입과 검색어	
 	page.setSearchType(searchType);
 	page.setKeyword(keyword);
+	page.setAtag(atag);
 	
 	List<PageVO> list = null;
-	list = pageservice.alistPageSearch(page.getDisplayPost(), page.getPostNum(), searchType, keyword);
+	list = pageservice.alistPageSearch(page.getDisplayPost(), page.getPostNum(), searchType, keyword, atag);
 	
 	model.addAttribute("list", list);
 	model.addAttribute("page", page);
 	model.addAttribute("select", num);
+	 model.addAttribute("atag", atag);
+	  List<String> atagList = pageservice.aTagList(); // 태그 목록을 가져오는 서비스 메서드 필요
+	    model.addAttribute("atagList", atagList);
 	
-	//
+	
 	model.addAttribute("searchType", searchType);
 	model.addAttribute("keyword", keyword);
 	}

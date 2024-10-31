@@ -76,4 +76,13 @@ public class Page { //페이징 관련 클래스
 		}
 	}
 	
+	private String atag;
+
+
+	public String getAtag() {
+		return atag;
+	}
+	public void setAtag(String atag) {
+		this.atag = atag;
+	}
 }

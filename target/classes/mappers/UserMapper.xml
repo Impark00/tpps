@@ -8,7 +8,7 @@
 	<![CDATA[INSERT INTO tpps_user (userId,userPassword,userPasswordRe,userName,userPhone,userEmail) VALUES (#{userId},#{userPassword},#{userPasswordRe},#{userName},#{userPhone},#{userEmail})]]>
 </insert>
 <select id="signin" resultType="com.ps.tp.vo.UserVO">
-	<![CDATA[SELECT userId,userPassword,verify FROM tpps_user WHERE userId=#{userId}]]>
+	<![CDATA[SELECT userId,userPassword,userPasswordRe,userName,userPhone,userEmail,verify FROM tpps_user WHERE userId=#{userId}]]>
 </select>
 <select id="viewUserInfo" resultType="com.ps.tp.vo.UserVO">
 	<![CDATA[SELECT * FROM tpps_user WHERE userId=#{userId}]]>

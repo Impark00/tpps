@@ -27,16 +27,20 @@
                 <label class="form-label">태그 선택</label>
                 <div class="d-flex flex-wrap">
                     <div class="form-check me-3">
-                        <input class="form-check-input" type="radio" name="atag" value="팬아트" id="tag1">
-                        <label class="form-check-label" for="tag1">팬아트</label>
+                        <input class="form-check-input" type="radio" name="atag" value="기본" id="tag1" checked>
+                        <label class="form-check-label" for="tag1">기본</label>
                     </div>
                     <div class="form-check me-3">
-                        <input class="form-check-input" type="radio" name="atag" value="질문" id="tag2">
-                        <label class="form-check-label" for="tag2">질문</label>
+                        <input class="form-check-input" type="radio" name="atag" value="공지" id="tag2">
+                        <label class="form-check-label" for="tag2">공지</label>
                     </div>
                     <div class="form-check me-3">
-                        <input class="form-check-input" type="radio" name="atag" value="자유" id="tag3" checked>
-                        <label class="form-check-label" for="tag3">자유</label>
+                        <input class="form-check-input" type="radio" name="atag" value="질문" id="tag3">
+                        <label class="form-check-label" for="tag3">질문</label>
+                    </div>
+                    <div class="form-check me-3">
+                        <input class="form-check-input" type="radio" name="atag" value="정보" id="tag4">
+                        <label class="form-check-label" for="tag4">정보</label>
                     </div>
                     <!-- 추가 태그를 여기에 더할 수 있습니다 -->
                 </div>
