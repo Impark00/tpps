@@ -15,13 +15,8 @@
     </style>
 
     <div class="write-container">
-        <form action="/aboard/write" method="POST">
-            <!-- 제목 입력 -->
-            <div class="input-group my-3">
-                <label class="form-label" for="atitle">제목</label>
-                <input type="text" name="atitle" id="atitle" class="form-control" placeholder="제목을 적어주세요" required/> <!-- 필수 입력 -->
-            </div>
-
+        <form action="/aboard/write" method="POST" enctype="multipart/form-data">
+        
             <!-- 태그 선택 -->
             <div class="mb-4">
                 <label class="form-label">태그 선택</label>
@@ -45,6 +40,12 @@
                     <!-- 추가 태그를 여기에 더할 수 있습니다 -->
                 </div>
             </div>
+        
+            <!-- 제목 입력 -->
+            <div class="input-group my-3">
+                <label class="form-label" for="atitle">제목</label>
+                <input type="text" name="atitle" id="atitle" class="form-control" placeholder="제목을 적어주세요" required/> <!-- 필수 입력 -->
+            </div>
 
             <!-- 내용 입력 -->
             <div class="input-group mb-4">
@@ -52,6 +53,10 @@
                 <textarea name="acontent" id="acontent" class="form-control" placeholder="내용을 적어주세요" required></textarea> <!-- 필수 입력 -->
             </div>
 
+			<div class="input-group mb-4">
+        		<label class="form-label" for="image">이미지 업로드</label>
+        		<input type="file" name="image" id="image" class="form-control" accept="image/*"/>
+    		</div>
             <c:if test ="${userinfo != null}">
                 <input type="hidden" name="awriter" class="form-control" value="${userinfo.userId}"/> <!-- 작성자 ID 숨김 필드 -->
             </c:if>
