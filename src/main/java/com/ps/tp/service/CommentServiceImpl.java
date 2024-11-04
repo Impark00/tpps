@@ -18,13 +18,11 @@ public class CommentServiceImpl implements CommentService {
 	
 	@Override
 	public List<CommentVO> alist(int ano) throws Exception {
-		// TODO Auto-generated method stub
 		return dao.alist(ano);
 	}
 
 	@Override
 	public void awrite(CommentVO vo) throws Exception {
-		// TODO Auto-generated method stub
 		dao.awrite(vo);
 	}
 

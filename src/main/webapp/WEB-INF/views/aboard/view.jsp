@@ -48,6 +48,15 @@
             <label class="form-label w-25">내용:</label>
             <div class="w-75">${view.acontent}</div> <!-- 게시물 내용 -->
         </div>
+          <c:if test="${not empty view.imagepath}">
+            <div class="input-group mb-3">
+                <label class="form-label w-25">이미지:</label>
+                <div class="w-75">
+                   <img src="${pageContext.request.contextPath}${view.imagepath}" alt="게시물 이미지" class="img-fluid" />
+                </div>
+            </div>
+            <hr/>
+        </c:if>
         <hr/>
 
         <!-- 추천 버튼과 메세지 -->
@@ -69,7 +78,7 @@
             <!-- 네비게이션 버튼 -->
             <div class="btn-group d-flex align-items-center">
                 <a class="btn btn-outline-primary" href="/aboard/list">목록</a>
-                <c:if test="${userinfo.userId == view.awriter }">
+                <c:if test="${userinfo.userId == view.awriter || userinfo.verify == 9 }">
                 <a class="btn btn-outline-success" href="/aboard/modify?ano=${view.ano}">수정</a>
                 <a class="btn btn-outline-danger" href="/aboard/delete?ano=${view.ano}">삭제</a>
                 </c:if>
@@ -87,8 +96,10 @@
                     </div>
                     <div class="d-flex justify-content-end my-3">
                         <div class="btn-group">
+                        <c:if test="${userinfo.userId == view.awriter || userinfo.verify == 9 }">
                             <a href="/acom/modify?ano=${view.ano}&arno=${comment.arno}" class="btn btn-outline-success">수정</a>
                             <a href="/acom/delete?ano=${view.ano}&arno=${comment.arno}" class="btn btn-outline-danger">삭제</a>
+                            </c:if>
                         </div>
                     </div>
                 </li>

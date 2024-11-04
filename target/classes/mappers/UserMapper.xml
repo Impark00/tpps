@@ -16,4 +16,11 @@
 <update id="modifyUserInfo" parameterType="com.ps.tp.vo.UserVO">
 	<![CDATA[UPDATE tpps_user SET userName=#{userName},userPhone=#{userPhone},userEmail=#{userEmail} WHERE userId=#{userId}]]>
 </update>
+<select id="getUserPage" parameterType="String" resultType="com.ps.tp.vo.PageVO">
+    <![CDATA[
+    SELECT * FROM tpps_aboard WHERE awriter = #{userId}
+    ]]>
+</select>
+
+
 </mapper>

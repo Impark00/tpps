@@ -1,11 +1,14 @@
 	package com.ps.tp.service;
 
+import java.util.List;
+
 import javax.inject.Inject;
 import javax.servlet.http.HttpSession;
 
 import org.springframework.stereotype.Service;
 
 import com.ps.tp.dao.UserDAO;
+import com.ps.tp.vo.PageVO;
 import com.ps.tp.vo.UserVO;
 
 @Service
@@ -51,6 +54,11 @@ public class UserServiceImpl implements UserService {
 		System.out.println("서비스 진입");
 		dao.modifyUserInfo(vo);
 		System.out.println("서비스 끝");
+	}
+
+	@Override
+	public List<PageVO> getUserPage(String userId) {
+		return dao.getUserPage(userId);
 	}
 
 }

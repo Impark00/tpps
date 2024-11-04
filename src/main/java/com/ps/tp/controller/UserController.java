@@ -1,5 +1,7 @@
 package com.ps.tp.controller;
 
+import java.util.List;
+
 import javax.inject.Inject;
 //import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
@@ -18,6 +20,7 @@ import org.springframework.web.bind.annotation.SessionAttributes;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.ps.tp.service.UserService;
+import com.ps.tp.vo.PageVO;
 import com.ps.tp.vo.UserVO;
 
 @Controller
@@ -122,6 +125,10 @@ public class UserController {
 		String userId=user.getUserId();
 		user=service.viewUserInfo(userId);
 		model.addAttribute("user",user);
+		
+		 List<PageVO> list = service.getUserPage(userId);
+		    model.addAttribute("list", list);
+		    
 		return "userinfo/mypage";
 	}*/
 	

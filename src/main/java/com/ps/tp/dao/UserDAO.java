@@ -1,5 +1,8 @@
 package com.ps.tp.dao;
 
+import java.util.List;
+
+import com.ps.tp.vo.PageVO;
 import com.ps.tp.vo.UserVO;
 
 public interface UserDAO {
@@ -13,4 +16,6 @@ public interface UserDAO {
 	UserVO viewUserInfo(String vo) throws Exception;
 	
 	void modifyUserInfo(UserVO vo) throws Exception;
+	
+	List<PageVO> getUserPage(String userId);
 }
