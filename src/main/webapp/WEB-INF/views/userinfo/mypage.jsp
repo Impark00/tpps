@@ -9,10 +9,10 @@
 <h3 class="mt-5 mb-3">회원정보</h3>
 <div class="d-inline-flex">
 	<ul class="list-group">
-		<li class="list-group-item">아이디 : ${user.userId}</li>
-		<li class="list-group-item">이름 : ${user.userName}</li>
-		<li class="list-group-item">전화번호 : ${user.userPhone}</li>
-		<li class="list-group-item">이메일 : ${user.userEmail}</li>
+		<li class="list-group-item">아이디 : ${userinfo.userId}</li>
+		<li class="list-group-item">이름 : ${userinfo.userName}</li>
+		<li class="list-group-item">전화번호 : ${userinfo.userPhone}</li>
+		<li class="list-group-item">이메일 : ${userinfo.userEmail}</li>
 	</ul>
 </div>
 <a href="/modifyuser" type="button" class="mt-5 btn btn-primary">회원정보 수정</a>

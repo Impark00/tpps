@@ -3,9 +3,6 @@
 import javax.inject.Inject;
 import javax.servlet.http.HttpSession;
 
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.context.annotation.Bean;
-import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 
 import com.ps.tp.dao.UserDAO;
@@ -51,7 +48,9 @@ public class UserServiceImpl implements UserService {
 
 	@Override
 	public void modifyUserInfo(UserVO vo) throws Exception {
+		System.out.println("서비스 진입");
 		dao.modifyUserInfo(vo);
+		System.out.println("서비스 끝");
 	}
 
 }

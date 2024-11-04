@@ -1,7 +1,7 @@
 package com.ps.tp.controller;
 
 import javax.inject.Inject;
-import javax.servlet.http.HttpServletRequest;
+//import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -13,12 +13,15 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.SessionAttribute;
+import org.springframework.web.bind.annotation.SessionAttributes;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.ps.tp.service.UserService;
 import com.ps.tp.vo.UserVO;
 
 @Controller
+@SessionAttributes("userinfo")
 public class UserController {
 	
 	@Inject
@@ -63,7 +66,7 @@ public class UserController {
 		return "userinfo/signin";
 	}
 	
-	@PostMapping(value="/signin")
+	/*@PostMapping(value="/signin")
 	public String postSignin(UserVO vo,HttpServletRequest req,RedirectAttributes rttr) throws Exception{
 		HttpSession session=req.getSession();
 		
@@ -84,7 +87,28 @@ public class UserController {
 		session.setAttribute("userinfo", null);
 		rttr.addFlashAttribute("msg",-1);
 		return "redirect:/signin";
+	}*/
+	
+	@PostMapping(value="/signin")
+	public String postSignin(Model model,UserVO vo,RedirectAttributes rttr) throws Exception{
+		UserVO login=service.signin(vo);
+		if(login!=null) {
+			boolean passMatch=encoder.matches(vo.getUserPassword(), login.getUserPassword());
+			if(passMatch) {
+				UserVO userinfo=service.signin(vo);
+				model.addAttribute("userinfo",userinfo);
+				return "redirect:/";
+			}else {
+				model.addAttribute("");
+				rttr.addFlashAttribute("msg",0);
+				return "redirect:/signin";
+			}
+		}
+		model.addAttribute("");
+		rttr.addFlashAttribute("msg",-1);
+		return "redirect:/signin";
 	}
+	
 	
 	@GetMapping(value="/logout")
 	public String getLogout(HttpSession session) throws Exception{
@@ -92,12 +116,21 @@ public class UserController {
 		return "redirect:/";
 	}
 	
-	@GetMapping(value="/mypage")
+	/*@GetMapping(value="/mypage")
 	public String getMypage(HttpSession session,Model model) throws Exception{
 		UserVO user=(UserVO) session.getAttribute("userinfo");
 		String userId=user.getUserId();
 		user=service.viewUserInfo(userId);
 		model.addAttribute("user",user);
+		return "userinfo/mypage";
+	}*/
+	
+	@GetMapping(value="/mypage")
+	public String getMypage(@SessionAttribute("userinfo")UserVO vo,Model model) throws Exception{
+		String userinfo=vo.getUserId();
+		vo=service.viewUserInfo(userinfo);
+		model.addAttribute("userinfo",vo);
+		System.out.println();
 		return "userinfo/mypage";
 	}
 	
@@ -111,15 +144,11 @@ public class UserController {
 	}
 	
 	@PostMapping(value="/modifyuser")
-	public String postModifyuser(UserVO vo) throws Exception{
-		String inputpass=vo.getUserPassword();
-		String pass=encoder.encode(inputpass);
-		vo.setUserPassword(pass);
-		
-		String inputpassRe=vo.getUserPasswordRe();			
-		String passRe=encoder.encode(inputpassRe);
-		vo.setUserPasswordRe(passRe);
+	public String postModifyuser(UserVO vo,@SessionAttribute("user")String user) throws Exception{
+		System.out.println("메소드 진입");
+		vo.setUserId(user);
 		service.modifyUserInfo(vo);
+		System.out.println("메소드 끝");
 		return "redirect:/mypage";
 	}
 	

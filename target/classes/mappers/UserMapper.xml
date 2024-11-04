@@ -14,6 +14,6 @@
 	<![CDATA[SELECT * FROM tpps_user WHERE userId=#{userId}]]>
 </select>
 <update id="modifyUserInfo" parameterType="com.ps.tp.vo.UserVO">
-	<![CDATA[UPDATE tpps_user SET userId=#{userId},userPassword=#{userPassword},userPasswordRe=#{userPasswordRe},userName=#{userName},userPhone=#{userPhone},userEmail=#{userEmail} WHERE userId=#{userId}]]>
+	<![CDATA[UPDATE tpps_user SET userName=#{userName},userPhone=#{userPhone},userEmail=#{userEmail} WHERE userId=#{userId}]]>
 </update>
 </mapper>

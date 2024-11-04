@@ -37,7 +37,9 @@ public class UserDAOImpl implements UserDAO {
 
 	@Override
 	public void modifyUserInfo(UserVO vo) throws Exception {
+		System.out.println("다오 진입");
 		sql.update(namespace+".modifyUserInfo",vo);
+		System.out.println("다오 끝");
 	}
 	
 }
