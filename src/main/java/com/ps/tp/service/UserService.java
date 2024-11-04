@@ -1,7 +1,10 @@
 package com.ps.tp.service;
 
+import java.util.List;
+
 import javax.servlet.http.HttpSession;
 
+import com.ps.tp.vo.PageVO;
 import com.ps.tp.vo.UserVO;
 
 public interface UserService {
@@ -17,4 +20,6 @@ public interface UserService {
 	UserVO viewUserInfo(String vo) throws Exception;
 	
 	void modifyUserInfo(UserVO vo) throws Exception;
+
+	List<PageVO> getUserPage(String userId);
 }

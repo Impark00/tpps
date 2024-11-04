@@ -1,5 +1,7 @@
 	package com.ps.tp.service;
 
+import java.util.List;
+
 import javax.inject.Inject;
 import javax.servlet.http.HttpSession;
 
@@ -9,6 +11,7 @@ import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 
 import com.ps.tp.dao.UserDAO;
+import com.ps.tp.vo.PageVO;
 import com.ps.tp.vo.UserVO;
 
 @Service
@@ -52,6 +55,11 @@ public class UserServiceImpl implements UserService {
 	@Override
 	public void modifyUserInfo(UserVO vo) throws Exception {
 		dao.modifyUserInfo(vo);
+	}
+
+	@Override
+	public List<PageVO> getUserPage(String userId) {
+		return dao.getUserPage(userId);
 	}
 
 }

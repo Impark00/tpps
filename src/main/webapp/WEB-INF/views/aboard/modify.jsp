@@ -15,42 +15,61 @@
     </style>
 
     <div class="view-container">
-        <form method="POST"> <!-- 수정할 액션 추가 -->
-            <!-- 제목 입력 -->
-            <div class="input-group my-3">
-                <label class="form-label" for="atitle">제목</label>
-                <input type="text" name="atitle" id="atitle" class="form-control" value="${view.atitle}" required/> <!-- 필수 입력 -->
-            </div>
-
+        <form method="POST" enctype="multipart/form-data" onsubmit="return validateForm()">
+        
+        
             <!-- 태그 선택 -->
             <div class="mb-4">
                 <div class="d-flex align-items-center"> <!-- Flexbox로 정렬 -->
                     <label class="form-label me-2">태그 선택</label>
                     <div class="d-flex flex-wrap">
                         <div class="form-check me-3">
-                            <input class="form-check-input" type="radio" name="atag" value="팬아트" id="tag1"
-                                   <c:if test="${view.atag == '팬아트'}">checked</c:if> />
-                            <label class="form-check-label" for="tag1">팬아트</label>
+                            <input class="form-check-input" type="radio" name="atag" value="기본" id="tag1"
+                                   <c:if test="${view.atag == '기본'}">checked</c:if> />
+                            <label class="form-check-label" for="tag1">기본</label>
                         </div>
                         <div class="form-check me-3">
-                            <input class="form-check-input" type="radio" name="atag" value="질문" id="tag2"
+                            <input class="form-check-input" type="radio" name="atag" value="공지" id="tag2"
+                                   <c:if test="${view.atag == '공지'}">checked</c:if> />
+                            <label class="form-check-label" for="tag2">공지</label>
+                        </div>
+                        <div class="form-check me-3">
+                            <input class="form-check-input" type="radio" name="atag" value="질문" id="tag3"
                                    <c:if test="${view.atag == '질문'}">checked</c:if> />
-                            <label class="form-check-label" for="tag2">질문</label>
+                            <label class="form-check-label" for="tag3">질문</label>
                         </div>
                         <div class="form-check me-3">
-                            <input class="form-check-input" type="radio" name="atag" value="자유" id="tag3"
-                                   <c:if test="${view.atag == '자유'}">checked</c:if> />
-                            <label class="form-check-label" for="tag3">자유</label>
+                            <input class="form-check-input" type="radio" name="atag" value="정보" id="tag4"
+                                   <c:if test="${view.atag == '정보'}">checked</c:if> />
+                            <label class="form-check-label" for="tag4">정보</label>
                         </div>
                     </div>
                 </div>
             </div>
-
+			
+			  <!-- 제목 입력 -->
+            <div class="input-group my-3">
+                <label class="form-label" for="atitle">제목</label>
+                <input type="text" name="atitle" id="atitle" class="form-control" value="${view.atitle}" required/> <!-- 필수 입력 -->
+            </div>
+            
             <!-- 내용 입력 -->
             <div class="input-group mb-4">
                 <label class="form-label" for="acontent">내용</label>
-                <textarea name="acontent" id="acontent" class="form-control" required>${view.acontent}</textarea> <!-- 필수 입력 -->
+                <textarea name="acontent" id="acontent" class="form-control" >${view.acontent}</textarea> <!-- 필수 입력 -->
             </div>
+
+            <div class="input-group mb-4">
+                <label class="form-label" for="image">이미지 업로드</label>
+                <input type="file" name="image" id="image" class="form-control" accept="image/*"/>
+            </div>
+            
+                        <c:if test="${not empty view.imagepath}">
+                <div class="mb-4">
+                    <label>현재 이미지:</label><br>
+                    <img src="${view.imagepath}" alt="Current Image" class="img-fluid" style="max-width: 100%;"/>
+                </div>
+            </c:if>
 
             <!-- 전송 버튼 -->
             <div class="d-flex justify-content-end my-5">
@@ -59,5 +78,20 @@
         </form>
     </div>
 </div>
+
+<script>
+    function validateForm() {
+        const content = document.getElementById('acontent').value.trim();
+        const image = document.getElementById('image').files.length > 0;
+
+        // 내용이 비어있고 이미지도 없는 경우
+        if (content === '' && !image) {
+            alert("내용 또는 이미지를 선택해야 합니다.");
+            return false; // 제출 중지
+        }
+
+        return true; // 제출 허용
+    }
+</script>
 
 <jsp:include page="../include/footer.jsp" flush="false"/>
