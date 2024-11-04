@@ -7,13 +7,19 @@
 
 <insert id="awrite" parameterType="com.ps.tp.vo.PageVO">
 <![CDATA[
-insert into tpps_aboard(ano, atitle, acontent,awriter,atag) values (tpps_aboard_seq.nextval, #{atitle}, #{acontent}, #{awriter}, #{atag})
+insert into tpps_aboard(ano, atitle, acontent,awriter,atag, imagepath) 
 ]]>
+		<if test="imagepath != null">
+values (tpps_aboard_seq.nextval, #{atitle}, #{acontent}, #{awriter}, #{atag},#{imagepath})
+		</if>
+        <if test="imagepath == null">
+values (tpps_aboard_seq.nextval, #{atitle}, #{acontent}, #{awriter}, #{atag},NULL)
+		</if>
 </insert>
 
 <select id="aview" parameterType="int" resultType="com.ps.tp.vo.PageVO">
 
-select ano, atitle, acontent, adate, aview, achu, awriter, atag from tpps_aboard where ano = #{ano}
+select ano, atitle, acontent, adate, aview, achu, awriter, atag, imagepath from tpps_aboard where ano = #{ano}
 
 </select>
 
@@ -27,8 +33,14 @@ select ano, atitle, acontent, adate, aview, achu, awriter, atag from tpps_aboard
 
 <update id="amodify" parameterType="com.ps.tp.vo.PageVO">
 <![CDATA[
-update tpps_aboard set atitle = #{atitle}, acontent=#{acontent}, atag=#{atag} where ano = #{ano}
+update tpps_aboard
 ]]>
+<if test="imagepath != null"> 
+set atitle = #{atitle}, acontent=#{acontent}, atag=#{atag}, imagepath=#{imagepath}  where ano = #{ano}
+</if>
+<if test="imagepath == null">
+set atitle = #{atitle}, acontent=#{acontent}, atag=#{atag}  where ano = #{ano}
+</if>
 </update>
 <delete id="adelete" parameterType="int">
 <![CDATA[

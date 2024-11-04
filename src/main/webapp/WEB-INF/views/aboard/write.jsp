@@ -5,24 +5,17 @@
     <h1 class="mb-4">글 작성</h1>
 
     <style>
-        /* 스타일링: 전체 글 작성 컨테이너 */
         .write-container {
-            background-color: white; /* 배경색 */
-            border-radius: 0.5rem; /* 모서리 둥글게 */
-            padding: 20px; /* 내부 여백 */
-            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1); /* 그림자 효과 */
+            background-color: white; 
+            border-radius: 0.5rem; 
+            padding: 20px; 
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1); 
         }
     </style>
 
     <div class="write-container">
-        <form action="/aboard/write" method="POST">
-            <!-- 제목 입력 -->
-            <div class="input-group my-3">
-                <label class="form-label" for="atitle">제목</label>
-                <input type="text" name="atitle" id="atitle" class="form-control" placeholder="제목을 적어주세요" required/> <!-- 필수 입력 -->
-            </div>
-
-            <!-- 태그 선택 -->
+        <form action="/aboard/write" method="POST" enctype="multipart/form-data" onsubmit="return validateForm()">
+        
             <div class="mb-4">
                 <label class="form-label">태그 선택</label>
                 <div class="d-flex flex-wrap">
@@ -42,26 +35,47 @@
                         <input class="form-check-input" type="radio" name="atag" value="정보" id="tag4">
                         <label class="form-check-label" for="tag4">정보</label>
                     </div>
-                    <!-- 추가 태그를 여기에 더할 수 있습니다 -->
                 </div>
             </div>
-
-            <!-- 내용 입력 -->
-            <div class="input-group mb-4">
-                <label class="form-label" for="acontent">내용</label>
-                <textarea name="acontent" id="acontent" class="form-control" placeholder="내용을 적어주세요" required></textarea> <!-- 필수 입력 -->
+        
+            <div class="input-group my-3">
+                <label class="form-label" for="atitle">제목</label>
+                <input type="text" name="atitle" id="atitle" class="form-control" placeholder="제목을 적어주세요" required/>
             </div>
 
+            <div class="input-group mb-4">
+                <label class="form-label" for="acontent">내용</label>
+                <textarea name="acontent" id="acontent" class="form-control" placeholder="내용을 적어주세요"></textarea>
+            </div>
+
+            <div class="input-group mb-4">
+                <label class="form-label" for="image">이미지 업로드</label>
+                <input type="file" name="image" id="image" class="form-control" accept="image/*"/>
+            </div>
             <c:if test ="${userinfo != null}">
-                <input type="hidden" name="awriter" class="form-control" value="${userinfo.userId}"/> <!-- 작성자 ID 숨김 필드 -->
+                <input type="hidden" name="awriter" class="form-control" value="${userinfo.userId}"/>
             </c:if>
 
-            <!-- 전송 버튼 -->
             <div class="d-flex justify-content-end my-5">
-                <button type="submit" class="btn btn-outline-primary">전송</button> <!-- 제출 버튼 -->
+                <button type="submit" class="btn btn-outline-primary">전송</button>
             </div>
         </form>
     </div>
 </div>
+
+<script>
+    function validateForm() {
+        const content = document.getElementById('acontent').value.trim();
+        const image = document.getElementById('image').files.length > 0;
+
+        // 내용이 비어있고 이미지도 없는 경우
+        if (content === '' && !image) {
+            alert("내용 또는 이미지를 선택해야 합니다.");
+            return false; // 제출 중지
+        }
+
+        return true; // 제출 허용
+    }
+</script>
 
 <jsp:include page="../include/footer.jsp" flush="false"/>

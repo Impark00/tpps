@@ -13,10 +13,12 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.ps.tp.service.CommentService;
 import com.ps.tp.service.PageService;
+import com.ps.tp.utils.ImageUtils;
 import com.ps.tp.vo.CommentVO;
 import com.ps.tp.vo.Page;
 import com.ps.tp.vo.PageVO;
@@ -41,9 +43,15 @@ public class PageController {
 	}
 	
 	@PostMapping("/aboard/write")
-	public String postaWrite(PageVO vo) throws Exception{
-		pageservice.awrite(vo);
-		return "redirect:/aboard/list";
+	public String postaWrite(PageVO vo, @RequestParam("image") MultipartFile image) throws Exception {
+	    // 이미지 파일 처리
+	    if (image != null && !image.isEmpty()) {
+	        String imagePath = ImageUtils.saveImage(image); // 이미지 저장 메서드 호출
+	        vo.setImagepath(imagePath); // PageVO에 이미지 경로 설정
+	    }	
+
+	    pageservice.awrite(vo); // 게시글 저장
+	    return "redirect:/aboard/list"; // 목록 페이지로 리다이렉트
 	}
 	
 	@GetMapping("/aboard/view")
@@ -82,9 +90,19 @@ public class PageController {
 	}
 	
 	@PostMapping("/aboard/modify")
-	public String postaModify(PageVO vo)throws Exception{
-		pageservice.amodify(vo);
-		return "redirect:/aboard/view?ano=" + vo.getAno();
+	public String postaModify(PageVO vo, @RequestParam(value = "image", required = false) MultipartFile image) throws Exception {
+	    // 이미지 파일 처리
+	    if (image != null && !image.isEmpty()) {
+	        String imagePath = ImageUtils.saveImage(image); // 이미지 저장 메서드 호출
+	        vo.setImagepath(imagePath); // PageVO에 이미지 경로 설정
+	    } else {
+	        // 이미지가 제공되지 않는 경우, 기존 이미지 경로를 유지
+	        PageVO existingVo = pageservice.aview(vo.getAno()); // 기존 게시글 정보 가져오기
+	        vo.setImagepath(existingVo.getImagepath()); // 기존 이미지 경로 설정
+	    }
+
+	    pageservice.amodify(vo); // 게시글 수정
+	    return "redirect:/aboard/view?ano=" + vo.getAno(); // 수정된 게시글 보기로 리다이렉트
 	}
 	
 	@GetMapping("/aboard/delete")

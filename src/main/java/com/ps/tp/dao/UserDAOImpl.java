@@ -1,10 +1,13 @@
 package com.ps.tp.dao;
 
+import java.util.List;
+
 import javax.inject.Inject;
 
 import org.mybatis.spring.SqlSessionTemplate;
 import org.springframework.stereotype.Repository;
 
+import com.ps.tp.vo.PageVO;
 import com.ps.tp.vo.UserVO;
 
 @Repository
@@ -38,6 +41,12 @@ public class UserDAOImpl implements UserDAO {
 	@Override
 	public void modifyUserInfo(UserVO vo) throws Exception {
 		sql.update(namespace+".modifyUserInfo",vo);
+	}
+
+	@Override
+	public List<PageVO> getUserPage(String userId) {
+		
+		return sql.selectList(namespace + ".getUserPage", userId);
 	}
 	
 }
