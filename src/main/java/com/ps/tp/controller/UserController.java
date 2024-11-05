@@ -16,6 +16,7 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.SessionAttributes;
+import org.springframework.web.bind.support.SessionStatus;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.ps.tp.service.UserService;
@@ -89,8 +90,10 @@ public class UserController {
 	}
 	
 	@GetMapping(value="/logout")
-	public String getLogout(HttpSession session) throws Exception{
-		service.logout(session);
+	public String getLogout(HttpSession session,SessionStatus status) throws Exception{
+		//service.logout(session);
+		session.invalidate();
+		status.setComplete();
 		return "redirect:/";
 	}
 	

@@ -3,8 +3,6 @@
 import java.util.List;
 
 import javax.inject.Inject;
-import javax.servlet.http.HttpSession;
-
 import org.springframework.stereotype.Service;
 
 import com.ps.tp.dao.UserDAO;
@@ -36,12 +34,6 @@ public class UserServiceImpl implements UserService {
 	@Override
 	public UserVO signin(UserVO vo) throws Exception {
 		return dao.signin(vo);
-	}
-
-
-	@Override
-	public void logout(HttpSession session) throws Exception {
-		session.invalidate();
 	}
 
 	@Override
