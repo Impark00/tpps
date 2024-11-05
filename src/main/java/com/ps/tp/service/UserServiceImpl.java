@@ -45,15 +45,13 @@ public class UserServiceImpl implements UserService {
 	}
 
 	@Override
-	public UserVO viewUserInfo(String vo) throws Exception {
+	public UserVO viewUserInfo(UserVO vo) throws Exception {
 		return dao.viewUserInfo(vo);
 	}
 
 	@Override
 	public void modifyUserInfo(UserVO vo) throws Exception {
-		System.out.println("서비스 진입");
 		dao.modifyUserInfo(vo);
-		System.out.println("서비스 끝");
 	}
 
 	@Override

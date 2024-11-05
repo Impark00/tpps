@@ -34,15 +34,13 @@ public class UserDAOImpl implements UserDAO {
 	}
 
 	@Override
-	public UserVO viewUserInfo(String vo) throws Exception {
+	public UserVO viewUserInfo(UserVO vo) throws Exception {
 		return sql.selectOne(namespace+".viewUserInfo",vo);
 	}
 
 	@Override
 	public void modifyUserInfo(UserVO vo) throws Exception {
-		System.out.println("다오 진입");
 		sql.update(namespace+".modifyUserInfo",vo);
-		System.out.println("다오 끝");
 	}
 
 	@Override

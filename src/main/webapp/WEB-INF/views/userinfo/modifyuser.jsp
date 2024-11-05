@@ -7,19 +7,19 @@
 <form method="post" class="card mt-5 p-4 px-3">
 	<div class="mb-3">
 		<label class="form-label ">아이디</label>
-		<div class="form-control bg-light">${user.userId}</div>
+		<div class="form-control bg-light">${userinfo.userId}</div>
 	</div>
 	<div class="mb-3">
 		<label class="form-label">유저 이름</label>
-		<input type="text" name="userName" value="${user.userName}" class="form-control">
+		<input type="text" name="userName" value="${userinfo.userName}" class="form-control">
 	</div>
 	<div class="mb-3">
 		<label class="form-label">유저 전화번호</label>
-		<input type="text" name="userPhone" value="${user.userPhone}" class="form-control">
+		<input type="text" name="userPhone" value="${userinfo.userPhone}" class="form-control">
 	</div>
 	<div class="mb-3">
 		<label class="form-label">유저 이메일</label>
-		<input type="email" name="userEmail" value="${user.userEmail}" class="form-control">
+		<input type="email" name="userEmail" value="${userinfo.userEmail}" class="form-control">
 	</div>
 	<div class="input-group d-flex justify-content-end">
 		<a href="/mypage" class="btn btn-primary m-3 rounded">돌아가기</a>

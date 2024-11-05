@@ -17,7 +17,7 @@ public interface UserService {
 	
 	void logout(HttpSession session) throws Exception;
 	
-	UserVO viewUserInfo(String vo) throws Exception;
+	UserVO viewUserInfo(UserVO vo) throws Exception;
 	
 	void modifyUserInfo(UserVO vo) throws Exception;
 
