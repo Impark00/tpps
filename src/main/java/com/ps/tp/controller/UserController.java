@@ -3,6 +3,7 @@ package com.ps.tp.controller;
 import java.util.List;
 
 import javax.inject.Inject;
+import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -15,8 +16,6 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.SessionAttributes;
-import org.springframework.web.bind.support.SessionStatus;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.ps.tp.service.UserService;
@@ -24,7 +23,6 @@ import com.ps.tp.vo.PageVO;
 import com.ps.tp.vo.UserVO;
 
 @Controller
-@SessionAttributes("userinfo")
 public class UserController {
 	
 	@Inject
@@ -70,30 +68,29 @@ public class UserController {
 	}
 	
 	@PostMapping(value="/signin")
-	public String postSignin(Model model,UserVO vo,RedirectAttributes rttr) throws Exception{
+	public String postSignin(UserVO vo,HttpServletRequest req,RedirectAttributes rttr) throws Exception{
 		UserVO login=service.signin(vo);
 		if(login!=null) {
 			boolean passMatch=encoder.matches(vo.getUserPassword(), login.getUserPassword());
 			if(passMatch) {
 				UserVO userinfo=service.viewUserInfo(vo);
-				model.addAttribute("userinfo",userinfo);
+				HttpSession session=req.getSession();
+				session.setAttribute("userinfo",userinfo);
 				return "redirect:/";
 			}else {
-				model.addAttribute("");
+				
 				rttr.addFlashAttribute("msg",0);
 				return "redirect:/signin";
 			}
 		}
-		model.addAttribute("");
+		
 		rttr.addFlashAttribute("msg",-1);
 		return "redirect:/signin";
 	}
 	
 	@GetMapping(value="/logout")
-	public String getLogout(HttpSession session,SessionStatus status) throws Exception{
-		//service.logout(session);
+	public String getLogout(HttpSession session) throws Exception{
 		session.invalidate();
-		status.setComplete();
 		return "redirect:/";
 	}
 	
