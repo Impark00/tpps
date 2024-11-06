@@ -3,11 +3,6 @@
 import java.util.List;
 
 import javax.inject.Inject;
-import javax.servlet.http.HttpSession;
-
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.context.annotation.Bean;
-import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 
 import com.ps.tp.dao.UserDAO;
@@ -41,14 +36,8 @@ public class UserServiceImpl implements UserService {
 		return dao.signin(vo);
 	}
 
-
 	@Override
-	public void logout(HttpSession session) throws Exception {
-		session.invalidate();
-	}
-
-	@Override
-	public UserVO viewUserInfo(String vo) throws Exception {
+	public UserVO viewUserInfo(UserVO vo) throws Exception {
 		return dao.viewUserInfo(vo);
 	}
 

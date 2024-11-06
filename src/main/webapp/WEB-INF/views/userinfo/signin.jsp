@@ -7,17 +7,16 @@
         text-decoration: none; /* 기본 밑줄 제거 */
         transition: color 0.3s; /* 색상 변화 애니메이션 */
     }
-    
 </style>
 <div class="container">
 <div class="row justify-content-center h-100">
 <div class="col-md-6 col-lg-4">
-<form method="post" class="card mt-5">
+<form method="post" class="card mt-5 p-4 px-3">
 	<div class="form-group d-flex justify-content-center">
-		<input type="text" name="userId" placeholder="아이디" class="form-control mt-5 mb-3 w-75">
+		<input type="text" name="userId" placeholder="아이디" class="form-control mb-3">
 	</div>
 	<div class="form-group d-flex justify-content-center">
-		<input type="password" name="userPassword" placeholder="비밀번호" class="form-control mb-5 w-75">
+		<input type="password" name="userPassword" placeholder="비밀번호" class="form-control mb-5">
 	</div>
 	<div class="form-group d-flex justify-content-evenly">
 		<a href="/signup" class="custom-link">회원가입</a>
