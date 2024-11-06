@@ -1,0 +1,61 @@
+@charset "UTF-8";
+
+
+
+/* 리스트 */
+    body {
+        background-color: #f8f9fa; /* 배경색 */
+        font-family: 'Arial', sans-serif; /* 글꼴 */
+    }
+    .custom-link {
+        color: #007bff; /* 링크 색상 */
+        text-decoration: none; /* 기본 밑줄 제거 */
+        transition: color 0.3s; /* 색상 변화 애니메이션 */
+    }
+    .custom-link:hover {
+        color: #0056b3; /* 마우스 오버 시 색상 */
+    }
+    .table {
+        background-color: white; /* 테이블 배경 */
+        border-radius: 0.5rem; /* 테이블 모서리 둥글게 */
+        overflow: hidden; /* 모서리 둥글게 */
+    }
+    .table th, .table td {
+        vertical-align: middle; /* 수직 정렬 */
+    }
+    .badge {
+        font-size: 0.9rem; /* 배지 글꼴 크기 */
+    }
+    .pagination .page-item.active .page-link {
+        background-color: #007bff; /* 활성화된 페이지 색상 */
+        color: white; /* 활성화된 페이지 글자 색상 */
+    }
+    .pagination .page-link {
+        color: #007bff; /* 페이지 링크 색상 */
+    }
+    .pagination .page-link:hover {
+        background-color: #e9ecef; /* 페이지 링크 호버 색상 */
+    }
+
+
+/* 글 */
+
+        .small-alert {
+            font-size: 0.85rem; /* 글자 크기 조정 */
+            padding: 0.5rem 1rem; /* 패딩 조정 */
+        }
+        /* 전체 컨테이너 스타일 */
+        .view-container {
+            background-color: white; /* 배경색 */
+            border-radius: 0.5rem; /* 모서리 둥글게 */
+            padding: 20px; /* 내부 여백 */
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1); /* 그림자 효과 */
+        }
+
+
+        .write-container {
+            background-color: white; 
+            border-radius: 0.5rem; 
+            padding: 20px; 
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1); 
+        }

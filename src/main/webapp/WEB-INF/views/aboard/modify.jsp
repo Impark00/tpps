@@ -1,18 +1,11 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"  %>
 <jsp:include page="../include/header.jsp" flush="false"/>
+<link rel="stylesheet" href="${path}/resources/css/board.css"/>
 <div class="container mt-5">
     <h1 class="mb-4">게시물 보기</h1>
 
-    <style>
-        /* 스타일링: 전체 게시물 보기 컨테이너 */
-        .view-container {
-            background-color: white; /* 배경색 */
-            border-radius: 0.5rem; /* 모서리 둥글게 */
-            padding: 20px; /* 내부 여백 */
-            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1); /* 그림자 효과 */
-        }
-    </style>
+
 
     <div class="view-container">
         <form method="POST" enctype="multipart/form-data" onsubmit="return validateForm()">
@@ -79,19 +72,6 @@
     </div>
 </div>
 
-<script>
-    function validateForm() {
-        const content = document.getElementById('acontent').value.trim();
-        const image = document.getElementById('image').files.length > 0;
-
-        // 내용이 비어있고 이미지도 없는 경우
-        if (content === '' && !image) {
-            alert("내용 또는 이미지를 선택해야 합니다.");
-            return false; // 제출 중지
-        }
-
-        return true; // 제출 허용
-    }
-</script>
+<script src="${path}/resources/js/board.js"></script>
 
 <jsp:include page="../include/footer.jsp" flush="false"/>

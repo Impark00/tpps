@@ -1,17 +1,11 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"  %>
 <jsp:include page="../include/header.jsp" flush="false"/>
+<link rel="stylesheet" href="${path}/resources/css/board.css"/>
 <div class="container mt-5">
     <h1 class="mb-4">글 작성</h1>
 
-    <style>
-        .write-container {
-            background-color: white; 
-            border-radius: 0.5rem; 
-            padding: 20px; 
-            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1); 
-        }
-    </style>
+
 
     <div class="write-container">
         <form action="/aboard/write" method="POST" enctype="multipart/form-data" onsubmit="return validateForm()">
@@ -63,19 +57,7 @@
     </div>
 </div>
 
-<script>
-    function validateForm() {
-        const content = document.getElementById('acontent').value.trim();
-        const image = document.getElementById('image').files.length > 0;
+<script src="${path}/resources/js/board.js"></script>
 
-        // 내용이 비어있고 이미지도 없는 경우
-        if (content === '' && !image) {
-            alert("내용 또는 이미지를 선택해야 합니다.");
-            return false; // 제출 중지
-        }
-
-        return true; // 제출 허용
-    }
-</script>
 
 <jsp:include page="../include/footer.jsp" flush="false"/>

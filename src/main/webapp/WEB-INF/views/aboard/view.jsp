@@ -2,25 +2,13 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"  %>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"  %>
 <jsp:include page="../include/header.jsp" flush="false"/>
+<link rel="stylesheet" href="${path}/resources/css/board.css"/>
 <div class="container mt-5">
     <h1 class="mb-4">게시물 보기</h1>
 
-    <style>
-        /* 알림 스타일 */
-        .small-alert {
-            font-size: 0.85rem; /* 글자 크기 조정 */
-            padding: 0.5rem 1rem; /* 패딩 조정 */
-        }
-        /* 전체 컨테이너 스타일 */
-        .post-container {
-            background-color: white; /* 배경색 */
-            border-radius: 0.5rem; /* 모서리 둥글게 */
-            padding: 20px; /* 내부 여백 */
-            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1); /* 그림자 효과 */
-        }
-    </style>
 
-    <div class="post-container">
+
+    <div class="view-container">
         <!-- 게시물 제목과 메타데이터 -->
         <div class="input-group my-3">
             <label class="form-label w-25">제목:</label>
