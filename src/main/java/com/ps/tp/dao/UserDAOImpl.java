@@ -34,7 +34,7 @@ public class UserDAOImpl implements UserDAO {
 	}
 
 	@Override
-	public UserVO viewUserInfo(String vo) throws Exception {
+	public UserVO viewUserInfo(UserVO vo) throws Exception {
 		return sql.selectOne(namespace+".viewUserInfo",vo);
 	}
 
