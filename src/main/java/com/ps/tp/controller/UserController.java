@@ -13,7 +13,6 @@ import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
@@ -95,8 +94,9 @@ public class UserController {
 	}
 	
 	@GetMapping(value="/mypage")
-	public String getMypage(@ModelAttribute("userinfo")UserVO userinfo,Model model) throws Exception{
-		
+	public String getMypage(HttpServletRequest req,Model model) throws Exception{
+		HttpSession session=req.getSession();
+		UserVO userinfo=(UserVO) session.getAttribute("userinfo");
 		 List<PageVO> list = service.getUserPage(userinfo.getUserId());
 		 model.addAttribute("list", list);
 		 model.addAttribute("userinfo",userinfo);
@@ -104,14 +104,19 @@ public class UserController {
 	}
 	
 	@GetMapping(value="/modifyuser")
-	public String getModifyuser(@ModelAttribute("userinfo")UserVO userinfo,Model model) throws Exception{
+	public String getModifyuser(HttpServletRequest req,Model model) throws Exception{
+		HttpSession session=req.getSession();
+		UserVO userinfo=(UserVO)session.getAttribute("userinfo");
 		model.addAttribute("userinfo",userinfo);
 		return "userinfo/modifyuser";
 	}
 	
 	@PostMapping(value="/modifyuser")
-	public String postModifyuser(@ModelAttribute("userinfo")UserVO userinfo) throws Exception{
-		service.modifyUserInfo(userinfo);
+	public String postModifyuser(UserVO vo,HttpServletRequest req) throws Exception{
+		HttpSession session=req.getSession();
+		service.modifyUserInfo(vo);
+		UserVO newuserinfo=service.viewUserInfo(vo);
+		session.setAttribute("userinfo",newuserinfo);
 		return "redirect:/mypage";
 	}
 	

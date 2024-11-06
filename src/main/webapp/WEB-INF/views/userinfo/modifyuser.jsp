@@ -7,7 +7,7 @@
 <form method="post" class="card mt-5 p-4 px-3">
 	<div class="mb-3">
 		<label class="form-label ">아이디</label>
-		<div class="form-control bg-light">${userinfo.userId}</div>
+		<input type="text" class="form-control bg-light" name="userId" value="${userinfo.userId}"/>
 	</div>
 	<div class="mb-3">
 		<label class="form-label">유저 이름</label>
