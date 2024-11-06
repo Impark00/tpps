@@ -66,6 +66,27 @@ public class UserController {
 		return "userinfo/signin";
 	}
 	
+	/*@PostMapping(value="/signin")
+	public String postSignin(UserVO vo,HttpServletRequest req,RedirectAttributes rttr) throws Exception{
+		UserVO login=service.signin(vo);
+		if(login!=null) {
+			boolean passMatch=encoder.matches(vo.getUserPassword(), login.getUserPassword());
+			if(passMatch) {
+				UserVO userinfo=service.viewUserInfo(vo);
+				HttpSession session=req.getSession();
+				session.setAttribute("userinfo",userinfo);
+				return "redirect:/";
+			}else {
+				
+				rttr.addFlashAttribute("msg",0);
+				return "redirect:/signin";
+			}
+		}
+		
+		rttr.addFlashAttribute("msg",-1);
+		return "redirect:/signin";
+	}*/
+	
 	@PostMapping(value="/signin")
 	public String postSignin(UserVO vo,HttpServletRequest req,RedirectAttributes rttr) throws Exception{
 		UserVO login=service.signin(vo);
@@ -73,6 +94,11 @@ public class UserController {
 			boolean passMatch=encoder.matches(vo.getUserPassword(), login.getUserPassword());
 			if(passMatch) {
 				UserVO userinfo=service.viewUserInfo(vo);
+				if(userinfo.getVerify()==1) {
+					HttpSession session=req.getSession();
+					session.setAttribute("userinfo",userinfo);
+					return "redirect:/";
+				}
 				HttpSession session=req.getSession();
 				session.setAttribute("userinfo",userinfo);
 				return "redirect:/";
@@ -119,5 +145,6 @@ public class UserController {
 		session.setAttribute("userinfo",newuserinfo);
 		return "redirect:/mypage";
 	}
+	
 	
 }
