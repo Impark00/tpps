@@ -28,8 +28,9 @@
                     <a class="nav-link" href="${path}/aboard/list">alist</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="${path}/bboard/list">blist</a>
+                    <a class="nav-link" href="${path}/api/navermap">map</a>
                 </li>
+                
             </ul>
             <form class="d-flex btn-group">
                 <input class="form-control" type="text" placeholder="Search">

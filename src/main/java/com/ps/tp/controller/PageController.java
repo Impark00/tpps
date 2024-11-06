@@ -168,7 +168,12 @@ public class PageController {
 	
 	
 	
-	
+	//api
+	@GetMapping(value="/api/navermap")
+	public String getNaver() throws Exception{
+		return "/api/navermap";
+		
+	}
 	
 
 	//bboard

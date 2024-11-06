@@ -2,7 +2,7 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"  %>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"  %>
 <%@ page import="java.util.ArrayList" %>
-<link rel="stylesheet" href="${path}/resources/css/board.css"/>
+
 <%
     ArrayList<String> predefinedTags = new ArrayList<>();
     predefinedTags.add("기본");
@@ -13,7 +13,7 @@
 %>
 
 <jsp:include page="../include/header.jsp" flush="false"/>
-
+<link rel="stylesheet" href="${path}/resources/css/board.css"/>
 <div class="container mt-5">
     <h1 class="mb-4">목록</h1>
     <div class="d-flex justify-content-center my-4">
